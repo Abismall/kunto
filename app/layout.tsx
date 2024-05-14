@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import NextAuthProvider from "./context/next-auth";
+import AuthProvider from "./_components/auth-provider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -17,8 +17,8 @@ export default async function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`inter.className`}>
-        <NextAuthProvider>
+      <body className={inter.className}>
+        <AuthProvider>
           <div className="w-10/12 m-auto text-center bg-white flex flex-col min-h-screen">
             {/* <div>
               <Navbar />
@@ -26,7 +26,7 @@ export default async function RootLayout({
             <Footer /> */}
              <div className="grow">{children}</div>
           </div>
-        </NextAuthProvider>
+        </AuthProvider>
       </body>
     </html>
   );
