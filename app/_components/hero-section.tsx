@@ -10,7 +10,7 @@ export default function HeroSection() {
   style={{
     backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url("/hero-1.png")`,
     backgroundSize: 'cover',
-    backgroundPosition: 'center bottom', 
+     backgroundPosition: 'center 10%',
     height: '100vh', 
   }}
 >
