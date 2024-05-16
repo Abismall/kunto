@@ -4,13 +4,14 @@ import Link from "next/link";
 
 export default function HeroSection() {
   return (
-    <section
+<section
   id="hero"
   className="text-green-100 font-forest"
   style={{
     backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url("/hero-1.png")`,
     backgroundSize: 'cover',
-    backgroundPosition: 'center 10%', // Adjust the vertical position to 10% to slightly focus more towards the top
+    backgroundPosition: 'center bottom', 
+    height: '100vh', 
   }}
 >
   <div className="container mx-auto flex px-5 py-24 pt-64 md:flex-row flex-col items-center">
@@ -19,16 +20,24 @@ export default function HeroSection() {
       <p className="mb-8 leading-relaxed">
         Tilaa personalisoitu treeniohjelma ja saavuta paras itsesi!
       </p>
-      <div className="flex justify-center">
+      <div className="flex justify-center gap-4">
         <Link
-          href="/about"
-          className="inline-flex text-green-100 bg-green-500 hover:bg-green-700 border-0 py-2 px-6 focus:outline-none rounded text-lg"
+          href="/"
+          className="inline-flex text-#333333  border border-[#319415] py-2 px-6 focus:outline-none rounded text-lg transition duration-300 ease-in-out transform hover:scale-105 hover:shadow-md hover:shadow-[#319415]/50"
         >
           <p>Lue lisää</p>
-       </Link>
+        </Link>
+        <Link
+          href="/"
+          className="inline-flex text-#333333 border border-[#319415] py-2 px-6 focus:outline-none rounded text-lg transition duration-300 ease-in-out transform hover:scale-105 hover:shadow-md hover:shadow-[#319415]/50"
+        >
+          <p>Ota yhteyttä</p>
+        </Link>
       </div>
     </div>
   </div>
 </section>
+
+
   )
 }

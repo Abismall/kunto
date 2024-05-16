@@ -17,11 +17,13 @@ export default async function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+ <html lang="en">
       <body className={inter.className}>
         <AuthProvider>
-           <Navbar/>
-             <div className="grow">{children}</div>
+          <header>
+            <Navbar />
+          </header>
+          {children}
         </AuthProvider>
       </body>
     </html>

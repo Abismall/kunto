@@ -18,10 +18,16 @@ export default function Home() {
   }, [session, router])
   if (session.status == "loading" || session.status == "unauthenticated") return <div><p>Ladataan...</p></div>
   return (
-    <main >
-      <HeroSection />
-      <FAQSection />
-      <BlogSection />
+  <main className="main-container">
+      <div className="fullwidth">
+        <HeroSection />
+      </div>
+      <div className="centered">
+        <FAQSection />
+      </div>
+      <div className="centered">
+        <BlogSection />
+      </div>
     </main>
   );
 }

@@ -2,3 +2,32 @@
 @tailwind components;
 @tailwind utilities;
 
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  font-family: 'Inter', sans-serif;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  background-color: #ffffff;
+  
+}
+
+.main-container {
+  display: grid;
+  grid-template-columns: 1fr minmax(auto, 800px) 1fr;
+  width: 100%;
+}
+
+.fullwidth {
+  grid-column: 1 / 4;
+  width: 100%;
+}
+
+.centered {
+  grid-column: 2 / 3;
+}
