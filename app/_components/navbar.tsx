@@ -32,7 +32,7 @@ const Navbar: React.FC = () => {
 
 return (
 <nav
-  className={`font-forest fixed top-0 left-0 right-0 z-50 w-full bg-[#357a38] text-sm py-2 sm:py-3 transition-transform duration-300 ${
+  className={`font-forest fixed top-0 left-0 right-0 z-50 w-full bg-[#357a38]  transition-transform duration-300 ${
     isVisible ? 'translate-y-0' : '-translate-y-full'
   } shadow-md`}
 >

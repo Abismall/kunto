@@ -5,6 +5,7 @@ import HeroSection from "./_components/hero-section";
 import { useRouter } from 'next/navigation'
 import { useSession } from "next-auth/react"
 import { useEffect } from "react";
+import ContactForm from "./_components/contact-form";
 
 export default function Home() {
   const router = useRouter();
@@ -27,6 +28,9 @@ export default function Home() {
       </div>
       <div className="centered">
         <BlogSection />
+      </div>
+         <div className="centered">
+        <ContactForm />
       </div>
     </main>
   );
