@@ -1,14 +1,9 @@
-import { NextAuthOptions } from "next-auth";
-import GoogleProvider from 'next-auth/providers/google';
+import NextAuth from "next-auth";
+// import GoogleProvider from 'next-auth/providers/google';
 import CredentialsProvider from 'next-auth/providers/credentials';
-
 const user = { id: "1", name: "John Doe", email: "testi@example.com" }
-export const authOptions: NextAuthOptions = {
-  secret: process.env.NEXTAUTH_SECRET,
-  theme: {
-    colorScheme: "auto",
- 
-  },
+
+const config = {
   providers: [
     // GoogleProvider({
     //   clientId: process.env.GOOGLE_APP_CLIENT_ID as string,
@@ -30,4 +25,11 @@ export const authOptions: NextAuthOptions = {
 
     })
   ],
-};
+ 
+  experimental: {
+    enableWebAuthn: true,
+  },
+  debug: process.env.NODE_ENV !== "production" ? true : false,
+} 
+
+export const { handlers, auth, signIn, signOut } = NextAuth(config)
