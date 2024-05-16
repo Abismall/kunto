@@ -7,8 +7,8 @@ import Navbar from "./_components/navbar";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Kuntoäijät",
-  description: "Kuntoäijät",
+  title: "Kunto",
+  description: "Kunto",
 };
 
 export default async function RootLayout({
