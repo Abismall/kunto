@@ -4,18 +4,11 @@ import React, { useEffect, useState } from "react";
 import Link from "next/link";
 
 export default function Hero() {
-  const [isFirstLoad, setIsFirstLoad] = useState(localStorage.getItem("animate-hero") || true);
+  const [isFirstLoad, setIsFirstLoad] = useState(true);
+
   useEffect(() => {
-    if (!window || !localStorage) return
-
-    const localStorageValue = localStorage.getItem("animate-hero");
-    if (!localStorageValue) localStorage.setItem('animate-hero', 'true');
-    if (isFirstLoad === "true") setIsFirstLoad("false");
-
-
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    setIsFirstLoad(false);
   }, []);
-
 
   return (
     <section
