@@ -117,7 +117,7 @@ const Navbar: React.FC = () => {
             <Link
               onClick={reset}
               className="font-medium text-white hover:text-highlight sm:py-3 px-3 py-2 rounded transition duration-300 ease-in-out transform hover:scale-105"
-              href="/services"
+              href="/#service-info-block"
             >
               Palvelut
             </Link>

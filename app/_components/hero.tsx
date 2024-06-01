@@ -1,13 +1,16 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef } from "react";
 import Link from "next/link";
 
 export default function Hero() {
-  const [runAnimation, setrunAnimation] = useState(false);
+  const isFirstLoad = useRef(true);
 
   useEffect(() => {
-    setrunAnimation(true);
+    if (sessionStorage && sessionStorage.setItem) {
+      sessionStorage.setItem("animate-hero", "true");
+      isFirstLoad.current = false;
+    }
   }, []);
 
   return (
@@ -17,24 +20,25 @@ export default function Hero() {
       style={{
         backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url("/hero-1.png")`,
         backgroundSize: 'cover',
+        backgroundPosition: 'center',
         height: '100vh',
       }}
     >
       <div className="container flex px-5 py-24 pt-56 md:flex-row flex-col items-center justify-center md:justify-start">
         <div className="lg:flex-grow md:w-1/2 lg:pr-24 md:pr-16 flex flex-col md:items-start md:text-left mb-14 md:mb-0 items-center text-center">
           <h1
-            className={`sm:text-2xl text-3xl lg:text-8xl mb-4 text-secondary ${runAnimation ? "animate-slideInRight" : ""
+            className={`sm:text-2xl text-3xl lg:text-8xl mb-4 text-primary-light ${isFirstLoad ? "animate-slideInRight" : ""
               }`}
           >
             Anna kuntosi kohota
           </h1>
           <p
-            className={`mb-10 leading-relaxed lg:text-2xl opacity-0 ${runAnimation ? "animate-slideDown" : ""
+            className={`mb-10 leading-relaxed lg:text-2xl opacity-0 ${isFirstLoad ? "animate-slideDown" : ""
               }`}
             style={{
-              animationDelay: runAnimation ? "0.75s" : "0s",
+              animationDelay: isFirstLoad ? "0.75s" : "0s",
               animationFillMode: "forwards",
-              opacity: runAnimation ? "0" : "1",
+              opacity: isFirstLoad ? "0" : "1",
             }}
           >
             Tilaa personalisoitu treeniohjelma ja saavuta paras itsesi!
@@ -42,24 +46,24 @@ export default function Hero() {
           <div className="flex justify-center md:justify-start gap-6">
             <Link
               href="#service-info-block "
-              className={`inline-flex text-#333333 border border-secondary py-2 px-6 md:py-3 md:px-8 focus:outline-none rounded text-lg md:text-3xl opacity-0 ${runAnimation ? "animate-slideInLeft" : ""
+              className={`inline-flex text-#333333 border border-secondary py-2 px-6 md:py-3 md:px-8 focus:outline-none rounded text-lg md:text-3xl opacity-0 ${isFirstLoad ? "animate-slideInLeft" : ""
                 } hover:bg-secondary hover:text-white transition-colors duration-500 ease-in-out`}
               style={{
-                animationDelay: runAnimation ? "0.8s" : "0s",
+                animationDelay: isFirstLoad ? "0.8s" : "0s",
                 animationFillMode: "forwards",
-                opacity: runAnimation ? "0" : "1",
+                opacity: isFirstLoad ? "0" : "1",
               }}
             >
               <p className="text-center">Palvelut</p>
             </Link>
             <Link
               href="/contact"
-              className={`inline-flex text-#333333 border border-secondary py-2 px-6 md:py-3 md:px-8 focus:outline-none rounded text-lg md:text-3xl opacity-0 ${runAnimation ? "animate-slideInRight" : ""
+              className={`inline-flex text-#333333 border border-secondary py-2 px-6 md:py-3 md:px-8 focus:outline-none rounded text-lg md:text-3xl opacity-0 ${isFirstLoad ? "animate-slideInRight" : ""
                 } hover:bg-secondary hover:text-white transition-colors duration-500 ease-in-out`}
               style={{
-                animationDelay: runAnimation ? "0.8s" : "0s",
+                animationDelay: isFirstLoad ? "0.8s" : "0s",
                 animationFillMode: "forwards",
-                opacity: runAnimation ? "0" : "1",
+                opacity: isFirstLoad ? "0" : "1",
               }}
             >
               <p className="text-center">Yhteystiedot</p>

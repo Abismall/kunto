@@ -18,8 +18,9 @@ export default async function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
+    
  <html lang="en" className={oswald.className}>
-  <main className="main-container">
+ 
       <body >
         <AuthProvider>
           <header>
@@ -29,7 +30,6 @@ export default async function RootLayout({
           {children}
         </AuthProvider>
       </body>
-      </main>
     </html>
   );
 }
