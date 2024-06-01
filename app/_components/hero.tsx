@@ -4,12 +4,12 @@ import React, { useEffect, useState } from "react";
 import Link from "next/link";
 
 export default function Hero() {
-  const [isFirstLoad, setIsFirstLoad] = useState(sessionStorage.getItem("animate-hero") || true);
+  const [isFirstLoad, setIsFirstLoad] = useState(localStorage.getItem("animate-hero") || true);
   useEffect(() => {
-    if (!window || !sessionStorage) return
+    if (!window || !localStorage) return
 
-    const localStorageValue = sessionStorage.getItem("animate-hero");
-    if (!localStorageValue) sessionStorage.setItem('animate-hero', 'true');
+    const localStorageValue = localStorage.getItem("animate-hero");
+    if (!localStorageValue) localStorage.setItem('animate-hero', 'true');
     if (isFirstLoad === "true") setIsFirstLoad("false");
 
 
