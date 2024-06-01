@@ -4,7 +4,7 @@ import React, { useEffect, useState } from "react";
 import Link from "next/link";
 
 export default function Hero() {
-  const [isFirstLoad, setIsFirstLoad] = useState(sessionStorage.getItem("animate-hero"));
+  const [isFirstLoad, setIsFirstLoad] = useState(sessionStorage.getItem("animate-hero") || true);
   useEffect(() => {
     if (!window || !sessionStorage) return
 
