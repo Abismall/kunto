@@ -1,9 +1,9 @@
 "use client";
 
 import React from 'react';
-import { FaUser, FaEnvelope, FaComment } from 'react-icons/fa';
+import { FaCalendarAlt, FaClock, FaUser } from 'react-icons/fa';
 
-export default function ContactForm() {
+export default function ScheduleForm() {
   return (
     <div className="bg-gray-100 p-8 rounded-lg shadow-lg w-full">
       <form className="w-full">
@@ -20,34 +20,33 @@ export default function ContactForm() {
           />
         </div>
         <div className="mb-6">
-          <label htmlFor="email" className="block text-dark text-sm font-bold mb-2 flex items-center">
-            <FaEnvelope className="mr-2 text-secondary" /> Sähköposti
+          <label htmlFor="date" className="block text-dark text-sm font-bold mb-2 flex items-center">
+            <FaCalendarAlt className="mr-2 text-secondary" /> Päivämäärä
           </label>
           <input
-            type="email"
-            id="email"
-            name="email"
+            type="date"
+            id="date"
+            name="date"
             className="shadow appearance-none border rounded w-full py-2 px-3 text-secondary leading-tight focus:outline-none focus:shadow-outline border-gray-300"
-            placeholder="Sähköpostiosoitteesi"
           />
         </div>
         <div className="mb-6">
-          <label htmlFor="message" className="block text-dark text-sm font-bold mb-2 flex items-center">
-            <FaComment className="mr-2 text-secondary" /> Viesti
+          <label htmlFor="time" className="block text-dark text-sm font-bold mb-2 flex items-center">
+            <FaClock className="mr-2 text-secondary" /> Aika
           </label>
-          <textarea
-            id="message"
-            name="message"
+          <input
+            type="time"
+            id="time"
+            name="time"
             className="shadow appearance-none border rounded w-full py-2 px-3 text-secondary leading-tight focus:outline-none focus:shadow-outline border-gray-300"
-            placeholder="Kirjoita viestisi tähän"
-          ></textarea>
+          />
         </div>
         <div className="text-center">
           <button
             type="submit"
             className="bg-secondary text-white py-2 px-6 rounded-lg transition duration-300 ease-in-out transform hover:scale-105 hover:bg-secondary-dark"
           >
-            Lähetä
+            Varaa aika
           </button>
         </div>
       </form>
