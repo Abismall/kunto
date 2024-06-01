@@ -6,13 +6,14 @@ import Link from "next/link";
 export default function Hero() {
   const [isFirstLoad, setIsFirstLoad] = useState(sessionStorage.getItem("animate-hero"));
   useEffect(() => {
-    if (typeof window !== undefined) {
-      const localStorageValue = sessionStorage.getItem("animate-hero");
-      if (!localStorageValue) sessionStorage.setItem('animate-hero', 'true');
-      if (isFirstLoad === "true") setIsFirstLoad("false");
+    if (!window || !sessionStorage) return
 
-    }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    const localStorageValue = sessionStorage.getItem("animate-hero");
+    if (!localStorageValue) sessionStorage.setItem('animate-hero', 'true');
+    if (isFirstLoad === "true") setIsFirstLoad("false");
+
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
 
