@@ -5,7 +5,7 @@ import React, { useEffect } from 'react';
 
 export const PermissionCookie = hash('cookies');
 export const CookieDispatchEvent = 'update-cookies';
-const NoScroll = 'lock-scroll'
+const NoScroll = 'no-scroll'
 
 const CookieConsent: React.FC = () => {
     const [isHidden, setIsHidden] = React.useState(false);
