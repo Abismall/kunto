@@ -9,20 +9,31 @@ const NoScroll = 'lock-scroll'
 
 const CookieConsent: React.FC = () => {
     const [isHidden, setIsHidden] = React.useState(false);
-    const decline = () => window.history.back()
+    const decline = () => {
+        if (window) window.history.back()
+    }
     const accept = () => {
-        window.localStorage.setItem(PermissionCookie, 'true')
-        if (isHidden === false) setIsHidden(true);
-        return window.dispatchEvent(new Event(CookieDispatchEvent))
+        if (window) {
+            window.localStorage.setItem(PermissionCookie, 'true')
+            if (isHidden === false) setIsHidden(true);
+            return window.dispatchEvent(new Event(CookieDispatchEvent))
+        }
+
     }
     useEffect(() => {
-        if (typeof window !== undefined && window.localStorage.getItem(PermissionCookie)) document.body.classList.remove(NoScroll);
-        else document.body.classList.add(NoScroll);
+        if (window && document) {
+            if (window.localStorage.getItem(PermissionCookie)) {
+                document.body.classList.remove(NoScroll);
+                setIsHidden(true);
+            }
+            else document.body.classList.add(NoScroll);
+        }
+
         return () => document.body.classList.remove(NoScroll);
     }, [])
 
 
-    if (typeof window !== undefined && window.localStorage.getItem(PermissionCookie) || isHidden) return null;
+    if (isHidden) return null;
 
     return (
         <>

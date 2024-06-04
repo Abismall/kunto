@@ -9,10 +9,13 @@ const Navbar: React.FC = () => {
   const [previous, setPrevious] = useState(0)
   useEffect(() => {
     const handler = () => {
-      setDirection(window.scrollY > previous ? "down" : "up")
-      setPrevious(window.scrollY)
+      if (window) {
+        setDirection(window.scrollY > previous ? "down" : "up")
+        setPrevious(window.scrollY)
+      }
     }
-    window.addEventListener('scroll', handler);
+    if (window) window.addEventListener('scroll', handler);
+
     return () => window.removeEventListener('scroll', handler);
   }, [previous]);
 

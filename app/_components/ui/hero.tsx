@@ -8,9 +8,17 @@ export default function Hero() {
   const [isHidden, setIsHidden] = useState(true);
   useEffect(() => {
     const callback = () => setIsHidden(false)
-    if (typeof window !== undefined && window.localStorage.getItem(PermissionCookie)) window.addEventListener(CookieDispatchEvent, callback);
-    else callback();
-    return () => window.removeEventListener(CookieDispatchEvent, callback);
+    if (window) {
+      if (window.localStorage.getItem(PermissionCookie)) setIsHidden(false);
+      else {
+        window.addEventListener(CookieDispatchEvent, callback)
+      }
+    }
+
+
+    return () => {
+      if (window) window.removeEventListener(CookieDispatchEvent, callback);
+    }
 
   }, []);
 
