@@ -1,6 +1,3 @@
-
-import './styles.css';
-
 import Hero from '@components/ui/hero';
 import ServiceDisplay from '@components/services/service-display';
 import SocialMediaFeed, { SocialMediaPost } from '@components/social-media-feed';

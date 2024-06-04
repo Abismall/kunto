@@ -4,8 +4,10 @@ import "./cookie-consent.css"
 import React, { useEffect } from 'react';
 
 export const PermissionCookie = hash('cookies');
-export const CookieDispatchEvent = 'update-cookies';
-const NoScroll = 'no-scroll'
+export enum DispatchEvent {
+    CookieConsentAdded = 'cookie-consent-added',
+    CookieConsentRemoved = 'cookie-consent-added',
+} 
 
 const CookieConsent: React.FC = () => {
     const [isHidden, setIsHidden] = React.useState(false);
@@ -15,21 +17,17 @@ const CookieConsent: React.FC = () => {
     const accept = () => {
         if (window) {
             window.localStorage.setItem(PermissionCookie, 'true')
+            document.body.classList.remove('lock-scroll');
             if (isHidden === false) setIsHidden(true);
-            return window.dispatchEvent(new Event(CookieDispatchEvent))
+            return window.dispatchEvent(new Event(DispatchEvent.CookieConsentAdded))
         }
 
     }
     useEffect(() => {
-        if (window && document) {
-            if (window.localStorage.getItem(PermissionCookie)) {
-                document.body.classList.remove(NoScroll);
-                setIsHidden(true);
-            }
-            else document.body.classList.add(NoScroll);
-        }
-
-        return () => document.body.classList.remove(NoScroll);
+        if (window && window.localStorage.getItem(PermissionCookie)) {
+            setIsHidden(true);
+        } else document.body.classList.add('lock-scroll');
+        return () => document.body.classList.remove('lock-scroll');
     }, [])
 
 

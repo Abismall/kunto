@@ -48,7 +48,7 @@ body {
 
 /* Cookie consent */
 
-.no-scroll {
+.lock-scroll {
   overflow: hidden;
   height: 100vh;
 }

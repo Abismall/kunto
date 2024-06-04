@@ -23,7 +23,7 @@ const SocialMediaFeed: React.FC<{ posts: SocialMediaPost[] }> = ({ posts }) => {
     const interval = setInterval(() => {
       setCurrentPostIndex((prevIndex) => (prevIndex + 1) % posts.length);
       setShowFullContent(false);
-    }, 30000); // Change post every 5 seconds
+    }, 30000);
 
     return () => clearInterval(interval);
   }, []);
