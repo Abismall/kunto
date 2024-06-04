@@ -4,15 +4,14 @@ module.exports = {
     extend: {
       colors: {
         primary: '#319415',
+        'primary-dark': '#315000',
         secondary: '#e03e00',
         highlight: '#ffc600',
-        light: '#333333',
+        dark: '#000205',
         'primary-light': '#b8ff00',
         'secondary-dark': '#e03100',
       },
-      fontFamily: {
-        sans: ['var(--font-Oswald)'],
-      },
+
       keyframes: {
 
         slideDown: {

@@ -1,0 +1,49 @@
+/* styles.css */
+.service-display-container {
+  @apply relative w-80 h-40 mt-8 bg-cover bg-center shadow-lg m-auto rounded overflow-hidden border border-secondary rounded-lg;
+}
+
+.service-display-overlay {
+  @apply absolute inset-0 bg-gray-900 bg-opacity-40 transition-opacity duration-300;
+}
+
+.service-display-container:hover .service-display-overlay {
+  @apply bg-opacity-80;
+}
+
+.service-display-content {
+  @apply relative z-10 p-4 flex flex-col justify-between h-full text-center;
+}
+
+.service-display-title {
+  @apply text-2xl z-10 font-semibold text-green-100 bg-gradient-to-r from-primary/0 via-primary to-primary/0 transition-transform duration-300;
+  text-shadow: 12px 2px 12px rgba(0, 0, 0, 1); /* Custom text-shadow */
+  margin-top: 3rem; /* Adjust as needed */
+}
+
+
+.service-display-container:hover .service-display-title {
+  @apply animate-shrink;
+}
+
+.service-display-container:hover .service-divider {
+  @apply duration-300 animate-shrink;
+}
+
+.service-display-typography-description {
+  @apply text-primary-light text-sm;
+}
+
+.service-display-action-button {
+  @apply mt-8 px-4 bg-secondary text-white hover:bg-secondary-dark transition-colors;
+}
+
+.service-display-action-row {
+  @apply flex flex-col justify-center items-center opacity-0 transition-opacity duration-300 group-hover:opacity-100;
+  @apply absolute inset-0 bg-gray-900 bg-opacity-80;
+}
+
+.service-display-container:hover .service-display-action-row {
+  @apply opacity-100;
+}
+

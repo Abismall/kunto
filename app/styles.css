@@ -1,0 +1,44 @@
+.service-section {
+  @apply mx-auto max-w-screen-lg;
+}
+
+.service-display-grid {
+  @apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2;
+}
+
+
+.container {
+  @apply mx-auto;
+}
+
+.profile-container {
+  @apply flex flex-col lg:flex-row lg:space-x-4;
+}
+
+.profile-card-wrapper {
+  @apply flex-1 p-4;
+}
+
+.tab-container {
+  @apply container mx-auto px-4 py-8;
+}
+
+.tab-buttons {
+  @apply flex justify-center mb-4 border-b-2 border-gray-300;
+}
+
+.tab-button {
+  @apply flex-1 px-4 py-2 rounded-t-lg flex items-center justify-center transition duration-300;
+}
+
+.tab-button-active {
+  @apply bg-secondary text-white border-secondary-dark;
+}
+
+.tab-button-inactive {
+  @apply bg-gray-100 text-black;
+}
+
+.tab-content {
+  @apply p-6 rounded-lg shadow-lg w-full text-black;
+}

@@ -1,0 +1,45 @@
+/* Toggle Switch */
+
+.bg-transparent-80 {
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+.toggle-checkbox {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.toggle-checkbox:checked + .toggle-label {
+    background-color: #4cd137;
+}
+
+.toggle-label {
+    display: block;
+    overflow: hidden;
+    cursor: pointer;
+    border-radius: 9999px;
+    border: 2px solid transparent;
+    height: 24px;
+    width: 48px;
+    background-color: #ccc;
+    transition: background-color 0.2s ease-in;
+}
+
+.toggle-label:before {
+    display: block;
+    position: absolute;
+    content: "";
+    height: 20px;
+    width: 20px;
+    border-radius: 9999px;
+    background: white;
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s ease-in;
+    transform: translateX(0);
+}
+
+.toggle-checkbox:checked + .toggle-label:before {
+    transform: translateX(24px);
+}

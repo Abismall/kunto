@@ -2,22 +2,27 @@
 @tailwind components;
 @tailwind utilities;
 
-html,
-body {
-
+html, body {
+  display: flex;
+  flex-direction: column;
   min-height: 100vh;
   margin: 0;
   padding: 0;
   width: 100%;
   height: 100%;
-  
-  background: radial-gradient(circle, rgba(224, 62, 0, 0.8) 0%, rgba(31, 31, 31, 0.8) 100%);
+  background: linear-gradient(to bottom, #f8f9fa, #e9ecef);
+ 
 }
 
+#root, #__next {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
 
 html {
   scroll-behavior: smooth;
-  
+
 }
 
 body {
@@ -40,34 +45,20 @@ body {
   grid-column: 2 / 3;
 }
 
-@keyframes dots {
-  0% {
-    content: ' ';
-  }
 
-  20% {
-    content: ' .';
-  }
+/* Cookie consent */
 
-  40% {
-    content: ' ..';
-  }
-
-  60% {
-    content: ' ...';
-  }
-
-  80% {
-    content: ' ...';
-  }
-
-  100% {
-    content: ' ...';
-  }
+.no-scroll {
+  overflow: hidden;
+  height: 100vh;
 }
 
-.animate-dots::after {
-  display: inline-block;
-  animation: dots 1s steps(1, end) infinite;
-  content: ' ';
+.dim-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8); /* semi-transparent background */
+  z-index: 999; /* Make sure it's on top of other content */
 }

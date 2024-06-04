@@ -5,41 +5,22 @@ import React, { useState, useEffect } from 'react';
 
 const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [isVisible, setIsVisible] = useState(false);
-  const [lastScrollY, setLastScrollY] = useState(0);
-
-  const toggleCollapse = () => {
-    setIsOpen(!isOpen);
-  };
-
-  const reset = () => {
-    setIsVisible(true);
-    setIsOpen(false);
-  };
-
-  const handleScroll = () => {
-    const currentScrollY = window.scrollY;
-    if (currentScrollY > lastScrollY) {
-      setIsVisible(false);
-    } else {
-      reset();
-    }
-    setLastScrollY(currentScrollY);
-  };
-
+  const [direction, setDirection] = useState<"up" | "down">("down");
+  const [previous, setPrevious] = useState(0)
   useEffect(() => {
-    window.addEventListener('scroll', handleScroll);
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [lastScrollY]);
+    const handler = () => {
+      setDirection(window.scrollY > previous ? "down" : "up")
+      setPrevious(window.scrollY)
+    }
+    window.addEventListener('scroll', handler);
+    return () => window.removeEventListener('scroll', handler);
+  }, [previous]);
 
   return (
+
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 w-full bg-secondary bg-opacity-55 transition-transform duration-300 ${
-        isVisible ? 'translate-y-0' : '-translate-y-full'
-      } shadow-md`}
+      className={`fixed top-0 left-0 right-0 z-50 w-full bg-dark transition-transform duration-300 ${direction === "up" && previous >= 0 ? 'translate-y-0' : '-translate-y-full'
+        }`}
     >
       <div
         className="relative max-w-[85rem] w-full mx-auto px-4 sm:flex sm:items-center sm:justify-between sm:px-6 lg:px-8"
@@ -47,21 +28,19 @@ const Navbar: React.FC = () => {
       >
         <div className="flex items-center justify-between w-full">
           <Link
-            className={`flex text-xl gap-2 items-center justify-center font-semibold text-white ${
-              isOpen ? 'hidden sm:flex' : 'flex'
-            }`}
+            className={`flex text-2xl gap-2 items-center justify-center font-semibold text-secondary ${isOpen ? 'hidden sm:flex' : 'flex'
+              }`}
             href="/"
             aria-label="Brand"
           >
-            <p className="flex-shrink-0 text-[16px] md:text-[20px]">Kuntoäijät</p>
+            <p className="flex-shrink-0 text-2xl shadow-lg">Kuntoäijät</p>
           </Link>
           <div className="sm:hidden">
             <button
               type="button"
-              className={`hs-collapse-toggle size-9 flex justify-center items-center gap-x-2 text-sm font-semibold rounded-lg text-white ${
-                isOpen ? 'active' : ''
-              }`}
-              onClick={toggleCollapse}
+              className={`hs-collapse-toggle size-9 flex justify-center items-center gap-x-2 text-sm font-semibold rounded-lg text-secondary ${isOpen ? 'active' : ''
+                }`}
+              onClick={() => setIsOpen(!isOpen)}
               aria-controls="navbar-collapse-with-animation"
               aria-label="Toggle navigation"
             >
@@ -73,7 +52,7 @@ const Navbar: React.FC = () => {
                   height="24"
                   viewBox="0 0 24 24"
                   fill="none"
-                  stroke="white"
+                  stroke="orange"
                   strokeWidth="2"
                   strokeLinecap="round"
                   strokeLinejoin="round"
@@ -89,7 +68,7 @@ const Navbar: React.FC = () => {
                   height="24"
                   viewBox="0 0 24 24"
                   fill="none"
-                  stroke="white"
+                  stroke="orange"
                   strokeWidth="2"
                   strokeLinecap="round"
                   strokeLinejoin="round"
@@ -108,22 +87,23 @@ const Navbar: React.FC = () => {
         >
           <div className="flex flex-col items-center gap-y-4 mt-5 sm:flex-row sm:items-center sm:justify-end sm:gap-x-7 sm:mt-0 sm:ps-7">
             <Link
-              onClick={reset}
-              className="font-medium text-white hover:text-highlight sm:py-3 px-3 py-2 rounded transition duration-300 ease-in-out transform hover:scale-105"
+              onClick={() => setIsOpen(false)}
+              className="text-secondary hover:text-highlight sm:py-3 px-3 py-2 rounded transition duration-300 ease-in-out transform hover:scale-105"
               href="/"
             >
-              Etusivu
+              <p className="flex-shrink-0 text-2xl shadow-lg">Etusivu</p>
             </Link>
             <Link
-              onClick={reset}
-              className="font-medium text-white hover:text-highlight sm:py-3 px-3 py-2 rounded transition duration-300 ease-in-out transform hover:scale-105"
-              href="/#service-info-block"
+              onClick={() => setIsOpen(false)}
+              className="text-2xl text-secondary hover:text-highlight sm:py-3 px-3 py-2 rounded transition duration-300 ease-in-out transform hover:scale-105"
+              href="/#services"
             >
-              Palvelut
+              <p className="flex-shrink-0 text-2xl shadow-lg">Palvelut</p>
             </Link>
           </div>
         </div>
       </div>
+      <div className="absolute bottom-0 w-full h-1 bg-gradient-to-r from-secondary/0 via-secondary to-secondary/0" />
     </nav>
   );
 };
