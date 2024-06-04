@@ -16,13 +16,13 @@ const CookieConsent: React.FC = () => {
         return window.dispatchEvent(new Event(CookieDispatchEvent))
     }
     useEffect(() => {
-        if (window.localStorage.getItem(PermissionCookie)) document.body.classList.remove(NoScroll);
+        if (typeof window.localStorage.getItem(PermissionCookie) === "string") document.body.classList.remove(NoScroll);
         else document.body.classList.add(NoScroll);
         return () => document.body.classList.remove(NoScroll);
     }, [])
 
 
-    if (window.localStorage.getItem(PermissionCookie) || isHidden) return null;
+    if (typeof window.localStorage.getItem(PermissionCookie) === "string" || isHidden) return null;
 
     return (
         <>
