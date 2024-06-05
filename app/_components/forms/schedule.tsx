@@ -63,7 +63,7 @@ export default function ScheduleForm() {
           <button onClick={handlePrevMonth} className="calendar-nav">
             <FaChevronLeft />
           </button>
-          <h2>{date.toLocaleDateString('default', { month: 'long', year: 'numeric' })}</h2>
+          <h2>{date.toDateString()}</h2>
           <button onClick={handleNextMonth} className="calendar-nav">
             <FaChevronRight />
           </button>
@@ -77,7 +77,7 @@ export default function ScheduleForm() {
           {renderCalendarDays()}
         </div>
       </div>
-      
+
       {selectedDate && (
         <div className="overlay">
           <div className="overlay-content">

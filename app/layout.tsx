@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Oswald } from "next/font/google";
 import "./globals.css";
-import './styles.css';
+
 import AuthProvider from "@components/providers/auth";
 import Navbar from "@components/ui/navbar";
 import Footer from "@components/ui/footer";
@@ -26,12 +26,12 @@ export default async function RootLayout({
 
       <body >
         <AuthProvider>
-          <header>
+          <header >
             <Navbar />
           </header>
           <main className={`maint-container`}>
             {children}
-            <CookieConsent/>
+            <CookieConsent />
           </main>
         </AuthProvider>
         <Footer />

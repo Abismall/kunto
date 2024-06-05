@@ -1,9 +1,34 @@
 import Hero from '@components/ui/hero';
 import ServiceDisplay from '@components/services/service-display';
 import SocialMediaFeed, { SocialMediaPost } from '@components/social-media-feed';
-
+import './styles.css';
 
 export default async function Home() {
+  const suggestions = [
+    {
+      serviceTitle: "Hengitysvalmennus",
+      description: "Tutustu salaisuuksiin, jotka parantavat hengityselimistösi terveyttä tehokkaiden hengitystekniikoiden ja -harjoitusten avulla.",
+      imageUrl: "/blog-1.jpg",
+      linkTitle: "Lue lisää",
+      href: "/service/hengitysvalmennus"
+    },
+
+    {
+      serviceTitle: "Liikuntaneuvonta",
+      description: "Opi vahvistamaan ja suojaamaan tuki- ja liikuntaelimistöäsi kohdennetuilla harjoituksilla ja oikealla asennolla.",
+      imageUrl: "/blog-1.jpg",
+      linkTitle: "Lue lisää",
+      href: "/service/liikuntaneuvonta"
+    },
+    {
+      serviceTitle: "Ruokavalio-ohjaus",
+      description: "Hyödynnä ravitsemuksen voimaa asiantuntijavinkkiemme avulla tasapainoisesta ruokavaliosta, superruoista ja ateriasuunnittelusta optimaalisen terveyden saavuttamiseksi.",
+      imageUrl: "/blog-1.jpg",
+      linkTitle: "Lue lisää",
+      href: "/service/ruokavalio-ohjaus"
+    }
+
+  ];
   const socialMediaPosts: SocialMediaPost[] = [
     {
       id: 1,
@@ -46,32 +71,7 @@ export default async function Home() {
       userPicture: '/profile-2.png',
     }
   ];
-  const suggestions = [
-    {
-      serviceTitle: "Hengitysvalmennus",
-      description: "Tutustu salaisuuksiin, jotka parantavat hengityselimistösi terveyttä tehokkaiden hengitystekniikoiden ja -harjoitusten avulla.",
-      imageUrl: "/blog-1.jpg",
-      linkTitle: "Tutustu palveluihin",
-      href: "/palvelut"
-    },
 
-    {
-      serviceTitle: "Liikuntaneuvonta",
-      description: "Opi vahvistamaan ja suojaamaan tuki- ja liikuntaelimistöäsi kohdennetuilla harjoituksilla ja oikealla asennolla.",
-      imageUrl: "/blog-1.jpg",
-      linkTitle: "Varaa aika",
-      href: "/ajanvaraus"
-    },
-    {
-      serviceTitle: "Ruokavalio-ohjaus",
-      description: "Hyödynnä ravitsemuksen voimaa asiantuntijavinkkiemme avulla tasapainoisesta ruokavaliosta, superruoista ja ateriasuunnittelusta optimaalisen terveyden saavuttamiseksi.",
-      imageUrl: "/blog-1.jpg",
-      linkTitle: "Ota yhteyttä",
-      href: "/yhteystiedot"
-    }
-
-
-  ];
 
   return (
     <>

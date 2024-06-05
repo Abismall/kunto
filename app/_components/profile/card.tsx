@@ -19,6 +19,7 @@ const ProfileCard: React.FC<ProfileCardProps> = ({ name, phone, email, picture, 
           alt={name}
           width={150}
           height={150}
+          priority
           className="rounded-full"
         />
       </div>

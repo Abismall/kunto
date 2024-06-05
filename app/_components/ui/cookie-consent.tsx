@@ -7,10 +7,10 @@ export const PermissionCookie = hash('cookies');
 export enum DispatchEvent {
     CookieConsentAdded = 'cookie-consent-added',
     CookieConsentRemoved = 'cookie-consent-added',
-} 
+}
 
 const CookieConsent: React.FC = () => {
-    const [isHidden, setIsHidden] = React.useState(false);
+    const [isHidden, setIsHidden] = React.useState(true);
     const decline = () => {
         if (window) window.history.back()
     }
@@ -26,7 +26,7 @@ const CookieConsent: React.FC = () => {
     useEffect(() => {
         if (window && window.localStorage.getItem(PermissionCookie)) {
             setIsHidden(true);
-        } else document.body.classList.add('lock-scroll');
+        } else { setIsHidden(false); document.body.classList.add('lock-scroll'); }
         return () => document.body.classList.remove('lock-scroll');
     }, [])
 
