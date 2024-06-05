@@ -36,7 +36,7 @@ export default async function Page({
   const content = fetchContent(`${service.toLowerCase()}.md`);
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen py-18 px-5">
+    <div className="flex flex-col items-center justify-center min-h-screen py-10 md:py-20 px-5">
       <ReactMarkdown className="prose" rehypePlugins={[rehypeRaw]}>
         {content}
       </ReactMarkdown>
