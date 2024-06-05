@@ -3,7 +3,7 @@ import ServiceDisplay from '@components/services/service-display';
 import SocialMediaFeed, { SocialMediaPost } from '@components/social-media-feed';
 import './styles.css';
 
-export default async function Home() {
+export default async function Page() {
   const suggestions = [
     {
       serviceTitle: "Hengitysvalmennus",

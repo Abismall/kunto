@@ -1,4 +1,3 @@
-/* eslint-disable react/no-unknown-property */
 'use client';
 
 import React, { useEffect, useState } from 'react';
@@ -12,7 +11,7 @@ const Skeleton = () => {
         id='hero'
         className='text-green-100 relative'
         style={{
-          backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('/hero-1.png')`,
+          backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('/treadmill-in-modern-gym.jpg')`,
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           height: '100vh',
@@ -26,18 +25,18 @@ const Skeleton = () => {
 }
 
 export default function Hero() {
-  const [isHidden, setIsHidden] = useState(true);
+  const [show, set] = useState(false);
   useEffect(() => {
-    const callback = () => setIsHidden(false)
+    const callback = () => set(true);
     if (window) {
-      if (window.localStorage.getItem(PermissionCookie)) setIsHidden(false);
+      if (window.localStorage.getItem(PermissionCookie)) callback();
       else window.addEventListener(DispatchEvent.CookieConsentAdded, callback)
     }
     return () => window.removeEventListener(DispatchEvent.CookieConsentAdded, callback);
   }, []);
 
 
-  if (isHidden) return <Skeleton />
+  if (!show) return <Skeleton />
   else
     return (
       <div className='fullwidth'>
@@ -45,12 +44,13 @@ export default function Hero() {
           id='hero'
           className='text-green-100 relative'
           style={{
-            backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('/hero-1.png')`,
+            backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('/treadmill-in-modern-gym.jpg')`,
             backgroundSize: 'cover',
             backgroundPosition: 'center',
             height: '100vh',
           }}
         >
+
           <div className='container flex px-5 py-24 pt-56 md:flex-row flex-col items-center justify-center md:justify-start mx-auto'>
             <div className='lg:flex-grow md:w-1/2 lg:pr-24 md:pr-16 flex flex-col md:items-start md:text-left mb-14 md:mb-0 items-center text-center'>
               <h1
@@ -81,7 +81,7 @@ export default function Hero() {
                     opacity: '0',
                   }}
                 >
-                  <p className='mx-auto'>Yhteystiedot</p>
+                  <p className='mx-auto'>Ajanvaraus</p>
                 </Link>
               </div>
               <div className='text-container'>
@@ -112,6 +112,7 @@ export default function Hero() {
   }
       }
 `}</style>
+
       </div>
 
     );

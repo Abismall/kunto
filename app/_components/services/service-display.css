@@ -1,6 +1,6 @@
 /* styles.css */
 .service-display-container {
-  @apply relative w-80 h-60 mt-8 bg-cover bg-center shadow-lg m-auto rounded overflow-hidden border border-secondary rounded-lg;
+  @apply relative w-80 h-60 mt-2 bg-cover bg-center shadow-lg m-auto rounded overflow-hidden border border-secondary rounded-lg;
 }
 
 .service-display-overlay {

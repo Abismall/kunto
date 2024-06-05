@@ -1,5 +1,5 @@
 <div style="text-align: center; margin-bottom: 20px;">
-  <img src="../blog-1.jpg" alt="Hengitysvalmennus" style="display: block; margin: 0 auto; max-width: 100%; height: auto;"/>
+  <img src="/services/hengitysvalmennus.jpg" alt="Hengitysvalmennus" style="display: block; margin: 0 auto; max-width: 100%; height: auto;"/>
 </div>
 
 # <span style="color: #000205;">Hengitysvalmennus</span>

@@ -3,6 +3,7 @@ import matter from 'gray-matter';
 import ReactMarkdown from 'react-markdown';
 import rehypeRaw from 'rehype-raw';
 import fs from 'fs';
+import '..//../styles.css';
 
 const errorMarkdown = `
 # Error
@@ -36,8 +37,8 @@ export default async function Page({
   const content = fetchContent(`${service.toLowerCase()}.md`);
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen py-10 md:py-20 px-5">
-      <ReactMarkdown className="prose" rehypePlugins={[rehypeRaw]}>
+    <div className="flex flex-col items-center min-h-screen p-20">
+      <ReactMarkdown className="prose min-w-[80%]" rehypePlugins={[rehypeRaw]}>
         {content}
       </ReactMarkdown>
     </div>

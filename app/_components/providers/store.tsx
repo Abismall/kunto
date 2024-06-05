@@ -1,18 +1,21 @@
+/* eslint-disable @typescript-eslint/ban-types */
 import React from "react";
 
 const initialStore = {
-    showCookieConsent: true,
     showHero: false,
-    toggleCookieConsent: () => void 0,
     toggleHero: () => void 0
 }
-type Store = typeof initialStore
+type Store = {
+    showHero: boolean;
+    toggleHero: () => undefined;
+}
 
 const createEmitter = () => {
     const subscriptions = new Map();
     return {
         emit: (v: unknown) => subscriptions.forEach(fn => fn(v)),
-        subscribe: (fn: Function): any => {
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        subscribe: (fn: Function): () => any => {
             const key = Symbol();
             subscriptions.set(key, fn);
             return () => subscriptions.delete(key);
@@ -22,7 +25,7 @@ const createEmitter = () => {
 
 const createStore = (init: Function) => {
     const emitter = createEmitter();
-    let store: typeof initialStore = initialStore
+    let store = initialStore
     const get: () => Store = () => store;
     const set = (operation: Function) => (
         store = operation(store),
@@ -38,10 +41,9 @@ const createStore = (init: Function) => {
     return useStore;
 };
 
-export const useStore = createStore((get: () => any, set: (op: Function) => void) => {
+export const useStore = createStore((get: () => unknown, set: (op: Function) => void) => {
     return {
         ...initialStore,
-        toggleCookieConsent: () => set((store: { showCookieConsent: boolean; }) => ({ ...store, showCookieConsent: store.showCookieConsent === true ? false : true })),
         toggleHero: () => set((store: { showHero: boolean; }) => ({ ...store, showHero: store.showHero === true ? false : true }))
     }
 });
