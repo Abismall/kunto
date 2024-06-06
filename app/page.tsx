@@ -1,14 +1,13 @@
 import Hero from '@components/ui/hero';
 import ServiceDisplay from '@components/services/service-display';
 import SocialMediaFeed, { SocialMediaPost } from '@components/social-media-feed';
-import './styles.css';
 
 export default async function Page() {
   const suggestions = [
     {
       serviceTitle: "Hengitysvalmennus",
       description: "Tutustu salaisuuksiin, jotka parantavat hengityselimistösi terveyttä tehokkaiden hengitystekniikoiden ja -harjoitusten avulla.",
-      imageUrl: "/blog-1.jpg",
+      imageUrl: "/services/hengitysvalmennus.jpg",
       linkTitle: "Lue lisää",
       href: "/service/hengitysvalmennus"
     },
@@ -16,14 +15,14 @@ export default async function Page() {
     {
       serviceTitle: "Liikuntaneuvonta",
       description: "Opi vahvistamaan ja suojaamaan tuki- ja liikuntaelimistöäsi kohdennetuilla harjoituksilla ja oikealla asennolla.",
-      imageUrl: "/blog-1.jpg",
+      imageUrl: "/services/liikuntaneuvonta.jpg",
       linkTitle: "Lue lisää",
       href: "/service/liikuntaneuvonta"
     },
     {
       serviceTitle: "Ruokavalio-ohjaus",
       description: "Hyödynnä ravitsemuksen voimaa asiantuntijavinkkiemme avulla tasapainoisesta ruokavaliosta, superruoista ja ateriasuunnittelusta optimaalisen terveyden saavuttamiseksi.",
-      imageUrl: "/blog-1.jpg",
+      imageUrl: "/services/ruokavalio-ohjaus.jpg",
       linkTitle: "Lue lisää",
       href: "/service/ruokavalio-ohjaus"
     }
@@ -76,16 +75,14 @@ export default async function Page() {
   return (
     <>
       <Hero />
-      <section id="services" className="service-section">
-        <div className="service-display-grid">
-          {suggestions && suggestions.length > 0 && suggestions.map((service, index) => (
-            <ServiceDisplay
-              key={`${service}-${index}`}
-              service={service}
-            />
-          ))}
-        </div>
-      </section>
+     <section id="services" className="service-section">
+    {suggestions && suggestions.length > 0 && suggestions.map((service, index) => (
+      <ServiceDisplay
+        key={`${service}-${index}`}
+        service={service}
+      />
+    ))}
+</section>
       <h2 className='flex justify-center mt-6 text-dark'>Löydät meidät myös sosiaalisesta mediasta</h2>
       <div className="flex justify-center space-x-4 mb-6">
         <a href="#" className="text-sm text-secondary hover:text-highlight transition duration-300 ease-in-out transform hover:scale-105">Facebook</a>

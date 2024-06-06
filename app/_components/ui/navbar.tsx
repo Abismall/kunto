@@ -5,17 +5,14 @@ import React, { useState, useEffect } from 'react';
 
 const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [direction, setDirection] = useState<'up' | 'down'>('down');
+  const [direction, setDirection] = useState<'up' | 'down'>('up');
   const [previous, setPrevious] = useState(0)
   useEffect(() => {
     const handler = () => {
-      if (window) {
-        setDirection(window.scrollY > previous ? 'down' : 'up')
-        setPrevious(window.scrollY)
-      }
+      setDirection(window.scrollY > previous ? 'down' : 'up')
+      setPrevious(window.scrollY)
     }
-    if (window) window.addEventListener('scroll', handler);
-
+    window.addEventListener('scroll', handler);
     return () => window.removeEventListener('scroll', handler);
   }, [previous]);
 

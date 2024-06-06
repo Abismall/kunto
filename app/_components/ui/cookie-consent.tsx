@@ -6,7 +6,7 @@ import React, { useEffect } from 'react';
 export const PermissionCookie = hash('cookies');
 export enum DispatchEvent {
     CookieConsentAdded = 'cookie-consent-added',
-    CookieConsentRemoved = 'cookie-consent-added',
+    CookieConsentRemoved = 'cookie-consent-removed',
 }
 
 const CookieConsent: React.FC = () => {

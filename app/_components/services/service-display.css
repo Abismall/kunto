@@ -1,53 +1,51 @@
 /* styles.css */
+.service-section {
+  
+  background-color: #1a1a1a; /* Use a consistent background color */
+}
+
 .service-display-container {
-  @apply relative w-80 h-60 mt-2 bg-cover bg-center shadow-lg m-auto rounded overflow-hidden border border-secondary rounded-lg;
+  @apply relative;
+
+  background-color: #333; /* Add background color to ensure consistency */
+  border-radius: 5px; /* Round the edges */
+  overflow: hidden; /* Ensure child elements respect the border radius */
 }
 
 .service-display-overlay {
-  @apply absolute inset-0 bg-gray-900 bg-opacity-40 transition-opacity duration-300;
+  @apply absolute inset-0 bg-gray-900 bg-opacity-40;
 }
 
-.service-display-container:hover .service-display-overlay {
-  @apply bg-opacity-80;
-}
+
 
 .service-display-content {
-  @apply relative z-10 p-4 flex flex-col justify-between h-full text-center;
+  @apply relative z-10 text-center h-[8rem];
 }
 
 .service-display-title {
-  @apply text-2xl z-10 font-semibold text-green-100 bg-gradient-to-r from-primary/0 via-primary to-primary/0 transition-transform duration-300;
-  text-shadow: 12px 2px 12px rgba(0, 0, 0, 1); /* Custom text-shadow */
-  margin-top: 3rem; /* Adjust as needed */
+  @apply text-4xl md:text-5xl py-6 z-10 text-green-100;
 }
 
 .service-display-typography-description {
-  @apply text-primary-light text-sm;
+  @apply text-primary-light mt-2 md:mt-4;
   flex-grow: 1; /* Make the description take up available space */
-  margin-top: 3rem;
 }
 
 .service-display-action-button {
-  @apply mt-4 px-4 py-2 bg-secondary text-white hover:bg-secondary-dark transition-colors self-end;
+  @apply text-white bg-gradient-to-r from-secondary/0 via-secondary/50 to-secondary/0;
   position: absolute;
-  bottom: 1rem; /* Adjust as needed */
-  left: 50%;
-  transform: translateX(-50%);
+  bottom: 0;
+  width: 100%;
 }
 
 .service-display-container:hover .service-display-title {
   @apply animate-shrink;
 }
 
-.service-display-container:hover .service-divider {
-  @apply duration-300 animate-shrink;
-}
-
 .service-display-action-row {
-  @apply flex flex-col justify-center items-center opacity-0 transition-opacity duration-300 group-hover:opacity-100;
-  @apply absolute inset-0 bg-gray-900 bg-opacity-80;
+  @apply absolute inset-0 bg-gray-900 flex flex-col opacity-0;
 }
 
 .service-display-container:hover .service-display-action-row {
-  @apply opacity-100;
+  @apply opacity-95 transition-opacity duration-200;
 }

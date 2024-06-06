@@ -16,6 +16,7 @@ export interface ServiceDisplayProps {
 export default function ServiceDisplay({ service }: ServiceDisplayProps) {
   const { imageUrl, serviceTitle, description, linkTitle, href } = service;
   return (
+
     <div
       className="service-display-container group"
       style={{ backgroundImage: `url(${imageUrl})` }}
@@ -30,7 +31,9 @@ export default function ServiceDisplay({ service }: ServiceDisplayProps) {
             <Link title={linkTitle} href={href}>{linkTitle}</Link>
           </button>
         </div>
+
       </div>
+      <div className='absolute bottom-0 w-full h-1 bg-gradient-to-r from-secondary/25 via-secondary/50 to-secondary/0' />
 
     </div>
   );
