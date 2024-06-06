@@ -1,7 +1,6 @@
-
 /* Profile Card adjustments */
 .profile-card {
-  border-radius: 8px;
+  border-radius: 4px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   padding: 1rem;
   display: flex;
@@ -11,14 +10,13 @@
 
 .profile-card img {
   border-radius: 50%;
-  width: 140px;
-  height: 140px;
+  width: 80px;
+  height: 80px;
   object-fit: cover;
 }
 
-.profile-card h2 {
+.profile-card h3 {
   font-size: 1.5rem;
-  margin-top: 1rem;
 }
 
 .profile-card p {
@@ -35,4 +33,3 @@
 .profile-card .contact-info span {
   margin-left: 0.5rem;
 }
-

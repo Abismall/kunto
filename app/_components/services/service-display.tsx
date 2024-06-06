@@ -21,8 +21,9 @@ export default function ServiceDisplay({ service }: ServiceDisplayProps) {
       className="service-display-container group"
       style={{ backgroundImage: `url(${imageUrl})` }}
     >
+          <div />
 
-      <div className="service-display-overlay" />
+      <div className="service-display-overlay " />
       <div className="service-display-content">
         <h3 className="service-display-title">{serviceTitle}</h3>
         <div className="service-display-action-row">

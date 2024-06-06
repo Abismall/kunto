@@ -1,14 +1,9 @@
-/* styles.css */
-.service-section {
-  
-  background-color: #1a1a1a; /* Use a consistent background color */
-}
 
 .service-display-container {
-  @apply relative;
+  @apply relative m-1;
 
   background-color: #333; /* Add background color to ensure consistency */
-  border-radius: 5px; /* Round the edges */
+  border-radius: 2px; /* Round the edges */
   overflow: hidden; /* Ensure child elements respect the border radius */
 }
 
@@ -19,15 +14,15 @@
 
 
 .service-display-content {
-  @apply relative z-10 text-center h-[8rem];
+  @apply relative z-10 text-center min-h-[8rem] max-h-[8rem];
 }
 
 .service-display-title {
-  @apply text-4xl md:text-5xl py-6 z-10 text-green-100;
+  @apply text-4xl md:text-5xl z-10 mt-2 text-green-100;
 }
 
 .service-display-typography-description {
-  @apply text-primary-light mt-2 md:mt-4;
+  @apply text-primary-light mt-2;
   flex-grow: 1; /* Make the description take up available space */
 }
 

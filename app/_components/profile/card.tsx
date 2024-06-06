@@ -2,6 +2,7 @@ import React from 'react';
 import Image from 'next/image';
 import { FaPhoneAlt, FaEnvelope } from 'react-icons/fa';
 import './card.css';
+
 interface ProfileCardProps {
   name: string;
   phone: string;
@@ -12,8 +13,8 @@ interface ProfileCardProps {
 
 const ProfileCard: React.FC<ProfileCardProps> = ({ name, phone, email, picture, title }) => {
   return (
-    <div className="profile-card">
-      <div className="profile-picture">
+    <div className="profile-card rounded-lg w-full flex flex-col items-center p-4 bg-white shadow-lg">
+      <div className="profile-picture mb-4">
         <Image
           src={picture}
           alt={name}
@@ -23,16 +24,16 @@ const ProfileCard: React.FC<ProfileCardProps> = ({ name, phone, email, picture, 
           className="rounded-full"
         />
       </div>
-      <div className="profile-info">
-        <h3 className="profile-name">{name}</h3>
-        <p className="profile-title">{title}</p>
-        <div className="profile-info-icon-container">
-          <FaPhoneAlt className="profile-info-icon" />
-          <span>{phone}</span>
+      <div className="profile-info text-center">
+        <h3 className="profile-name text-lg font-bold mb-1">{name}</h3>
+        <p className="profile-title text-sm text-gray-500 mb-2">{title}</p>
+        <div className="contact-info flex items-center justify-center mb-1">
+          <FaPhoneAlt className="profile-info-icon mr-2 text-gray-400" />
+          <span className="text-gray-600">{phone}</span>
         </div>
-        <div className="profile-info-icon-container">
-          <FaEnvelope className="profile-info-icon" />
-          <span>{email}</span>
+        <div className="contact-info flex items-center justify-center">
+          <FaEnvelope className="profile-info-icon mr-2 text-gray-400" />
+          <span className="text-gray-600">{email}</span>
         </div>
       </div>
     </div>

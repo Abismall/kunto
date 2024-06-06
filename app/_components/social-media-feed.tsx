@@ -23,7 +23,7 @@ const SocialMediaFeed: React.FC<{ posts: SocialMediaPost[] }> = ({ posts }) => {
     const interval = setInterval(() => {
       setCurrentPostIndex((prevIndex) => (prevIndex + 1) % posts.length);
       setShowFullContent(false);
-    }, 30000);
+    }, 1300);
 
     return () => clearInterval(interval);
   }, []);
@@ -33,22 +33,23 @@ const SocialMediaFeed: React.FC<{ posts: SocialMediaPost[] }> = ({ posts }) => {
   return (
     <div className="social-media-feed">
       <div className="social-media-post">
-        <div className="flex items-start w-full">
-          <Image
+          <span className='flex'><Image
             src={currentPost.userPicture}
             alt={currentPost.user}
-            width={80}
-            height={80}
+            width={60}
+            height={60}
             className="social-media-post-image"
-          />
+        />
+          <h2 className='flex justify-center text-4xl ml-4 p-2'>{currentPost.title}</h2></span> 
+       
           <div className="post-content">
             <div>
-              <h2 className='text-lg'>{currentPost.title}</h2>
-              <p className="text-base mb-4">
+            
+              <p className="text-base p-2">
                 {showFullContent ? currentPost.content : `${currentPost.content.slice(0, 400)}...`}
               </p>
             </div>
-             <div className="flex items-center mb-1">
+             <div className="flex">
                 {currentPost.platform === 'facebook' ? (
                   <FaFacebook className="text-highlight text-sm" />
                 ) : (
@@ -69,7 +70,6 @@ const SocialMediaFeed: React.FC<{ posts: SocialMediaPost[] }> = ({ posts }) => {
             </a>
              </div>
           </div>
-        </div>
       </div>
     </div>
   );

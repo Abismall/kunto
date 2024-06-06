@@ -74,22 +74,25 @@ export default async function Page() {
 
   return (
     <>
-      <Hero />
-     <section id="services" className="service-section">
-    {suggestions && suggestions.length > 0 && suggestions.map((service, index) => (
-      <ServiceDisplay
-        key={`${service}-${index}`}
-        service={service}
-      />
-    ))}
-</section>
-      <h2 className='flex justify-center mt-6 text-dark'>Löydät meidät myös sosiaalisesta mediasta</h2>
-      <div className="flex justify-center space-x-4 mb-6">
-        <a href="#" className="text-sm text-secondary hover:text-highlight transition duration-300 ease-in-out transform hover:scale-105">Facebook</a>
-        <a href="#" className="text-sm text-secondary hover:text-highlight transition duration-300 ease-in-out transform hover:scale-105">Twitter</a>
-        <a href="#" className="text-sm text-secondary hover:text-highlight transition duration-300 ease-in-out transform hover:scale-105">Instagram</a>
-      </div>
-      <SocialMediaFeed posts={socialMediaPosts} />
+<div className="w-full bg-gradient-to-r from-black/10 to-black/10">
+  <Hero />
+  <h2 className='flex justify-center p-6 text-dark'>Löydät meidät myös sosiaalisesta mediasta</h2>
+  <div className="flex justify-center space-x-4">
+    <a href="#" className="text-sm text-secondary hover:text-highlight transition duration-300 ease-in-out transform hover:scale-105">Facebook</a>
+    <a href="#" className="text-sm text-secondary hover:text-highlight transition duration-300 ease-in-out transform hover:scale-105">Twitter</a>
+    <a href="#" className="text-sm text-secondary hover:text-highlight transition duration-300 ease-in-out transform hover:scale-105">Instagram</a>
+  </div>
+  <SocialMediaFeed posts={socialMediaPosts} />
+</div>
+      <section id="services" className=''>
+        {suggestions && suggestions.length > 0 && suggestions.map((service, index) => (
+          <ServiceDisplay
+            key={`${service}-${index}`}
+            service={service}
+          />
+        ))}
+      </section>
+
     </>
   );
 };
