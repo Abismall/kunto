@@ -1,7 +1,7 @@
 
 
 
-# <span style="color: #000205; font-size: 44px;">Liikuntaneuvonta</span>
+# <span style="color: #000205; font-size: 28px;">Liikuntaneuvonta</span>
 
 ## <span style="color: #e03e00;">Vahvista ja Suojaa Kehoasi</span>
 

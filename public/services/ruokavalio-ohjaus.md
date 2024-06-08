@@ -1,6 +1,4 @@
-<div style="text-align: center; margin-bottom: 20px;">
-  <img src="/services/ruokavalio-ohjaus.jpg" alt="Ruokavalio-ohjaus" style="display: block; margin: 0 auto; max-width: 100%; height: auto;"/>
-</div>
+
 
 # <span style="color: #000205;">Ruokavalio-ohjaus</span>
 

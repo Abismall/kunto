@@ -18,7 +18,7 @@ export default function ServiceDisplay({ service }: ServiceDisplayProps) {
   return (
 
     <div
-      className="service-display-container group bg-gray-900"
+      className="service-display-container group shadow-lg"
       style={{ backgroundImage: `url(${imageUrl})`, opacity: "90%" }}
     >
       <div className="service-display-overlay" />

@@ -1,14 +1,11 @@
 .service-display-container {
-  @apply relative flex flex-row shadow-lg sm:flex-col h-[rem] w-[20rem] m-1;
+  @apply relative flex flex-row sm:flex-col h-[rem] w-[20rem] m-1;
   border-radius: 8px; /* Round the edges */
   overflow: hidden; /* Ensure child elements respect the border radius */
   /* Add more lively shadow */
   box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1), 0 4px 6px rgba(0, 0, 0, 0.1), 0 20px 25px rgba(0, 0, 0, 0.1);
 }
 
-.service-display-overlay {
-  @apply absolute inset-0 bg-gray-900 bg-opacity-40;
-}
 
 .service-display-content {
   @apply relative z-10 p-1 text-center flex-grow;

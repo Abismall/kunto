@@ -1,38 +1,40 @@
 import Hero from '@components/ui/hero';
 // import ServiceDisplay from '@components/services/service-display';
 import SocialMediaFeed, {type SocialMediaPost } from '@components/social-media-feed';
-import ReactMarkdown from 'react-markdown';
-import rehypeRaw from 'rehype-raw';
-import path from 'path';
-import matter from 'gray-matter';
-import fs from 'fs';
+
+// import path from 'path';
+// import matter from 'gray-matter';
+// import fs from 'fs';
 import Footer from "./components/ui/footer";
 import ServiceDisplay from './components/services/service-display';
           
-const errorMarkdown = `
-# Error
+// import ReactMarkdown from 'react-markdown';
+// import rehypeRaw from 'rehype-raw';
 
-## Error Loading Service File
+// const errorMarkdown = `
+// # Error
 
-We encountered an error while trying to load the service file. Please check the service name and try again.
+// ## Error Loading Service File
 
-If the issue persists, contact our support team for assistance.
+// We encountered an error while trying to load the service file. Please check the service name and try again.
 
-[Return to Home](http://localhost:3000)
-`;
+// If the issue persists, contact our support team for assistance.
 
-const fetchContent = (file: string) => {
-  try {
-    const filePath = path.join(process.cwd(), 'public', 'services', file);
-    const fileContent = fs.readFileSync(filePath, 'utf8');
-    const { content } = matter(fileContent);
-    return content;
-  } catch (error) {
-    console.error('Error reading markdown file:', error);
-    return errorMarkdown;
-  }
-};
-const content = fetchContent(`${"liikuntaneuvonta".toLowerCase()}.md`);
+// [Return to Home](http://localhost:3000)
+// `;
+
+// const fetchContent = (file: string) => {
+//   try {
+//     const filePath = path.join(process.cwd(), 'public', 'services', file);
+//     const fileContent = fs.readFileSync(filePath, 'utf8');
+//     const { content } = matter(fileContent);
+//     return content;
+//   } catch (error) {
+//     console.error('Error reading markdown file:', error);
+//     return errorMarkdown;
+//   }
+// };
+// const content = fetchContent(`${"liikuntaneuvonta".toLowerCase()}.md`);
 
 export default async function Page() {
   const suggestions = [
@@ -116,11 +118,11 @@ export default async function Page() {
     />
   ))}
 </section>
-  <div className="flex flex-col items-center max-w-screen-lg py-12 rounded-lg shadow-lg min-w-[100%] min-h-[100vh]">
+  {/* <div className="flex flex-col mx-auto max-w-screen-xl p-12 shadow-md min-h-[100vh]">
       <ReactMarkdown className="prose" rehypePlugins={[rehypeRaw]}>
         {content}
       </ReactMarkdown>
-    </div>
+    </div> */}
         <SocialMediaFeed posts={socialMediaPosts} />
               <Footer />
 </div>
