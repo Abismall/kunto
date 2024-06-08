@@ -2,41 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
-html, body {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-  margin: 0;
-  padding: 0;
-  width: 100%;
-  height: 100%;
-  background: rgb(245,245,245); 
-  background: linear-gradient(90deg, rgba(245,245,245,1) 0%, rgba(255,255,255,1) 50%, rgba(245,245,245,1) 100%); 
-}
-
-#root, #__next {
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-}
-
-html {
-  scroll-behavior: smooth;
-
-}
 
 body {
-  display: flex;
-  flex-direction: column;
+  margin: 0;
+  padding: 0;
+  background: rgba(1, 1, 1, 0.1);
+  box-sizing: border-box;
 }
 
-.main-container {
-  display: grid;
-  grid-template-columns: 1fr minmax(auto, 800px) 1fr;
-}
-.header {
-  padding-bottom: 1vh;
-}
+
 .fullwidth {
   grid-column: 1 / 4;
   width: 100%;
@@ -46,7 +20,6 @@ body {
   grid-column: 2 / 3;
 }
 
-
 /* Cookie consent */
 
 .lock-scroll {
@@ -54,7 +27,7 @@ body {
   height: 100vh;
 }
 
-.dim-overlay {
+.cookie-dim-overlay {
   position: fixed;
   top: 0;
   left: 0;
@@ -63,3 +36,14 @@ body {
   background: rgba(0, 0, 0, 0.8); /* semi-transparent background */
   z-index: 999; /* Make sure it's on top of other content */
 }
+
+.admin-dim-overlay {
+  position: fixed;
+  top: -40;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8); /* semi-transparent background */
+  z-index: 999; /* Make sure it's on top of other content */
+}
+

@@ -18,24 +18,22 @@ export default function ServiceDisplay({ service }: ServiceDisplayProps) {
   return (
 
     <div
-      className="service-display-container group"
-      style={{ backgroundImage: `url(${imageUrl})` }}
+      className="service-display-container group bg-gray-900"
+      style={{ backgroundImage: `url(${imageUrl})`, opacity: "90%" }}
     >
-          <div />
-
-      <div className="service-display-overlay " />
+      <div className="service-display-overlay" />
       <div className="service-display-content">
         <h3 className="service-display-title">{serviceTitle}</h3>
         <div className="service-display-action-row">
-          <p className="service-display-typography-description">{description}</p>
-          <button className="service-display-action-button">
-            <Link title={linkTitle} href={href}>{linkTitle}</Link>
-          </button>
+          <span className='flex flex-col'>
+            <p className="service-display-typography-description">{description}</p>
+            <button className="service-display-action-button">
+              <Link title={linkTitle} href={href} >{linkTitle}</Link>
+            </button>
+          </span>
         </div>
-
       </div>
       <div className='absolute bottom-0 w-full h-1 bg-gradient-to-r from-secondary/25 via-secondary/50 to-secondary/0' />
-
     </div>
   );
 };

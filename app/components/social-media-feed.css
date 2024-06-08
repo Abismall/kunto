@@ -3,10 +3,6 @@
   @apply max-w-screen-lg p-2 mx-auto overflow-hidden rounded-lg shadow-lg;
 }
 
-.social-media-post {
-  @apply animate-expand;
-}
-
 .post-content {
   @apply p-2;
 }

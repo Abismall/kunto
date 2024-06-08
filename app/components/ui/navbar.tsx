@@ -15,11 +15,10 @@ const Navbar: React.FC = () => {
     window.addEventListener('scroll', handler);
     return () => window.removeEventListener('scroll', handler);
   }, [previous]);
-
+ 
   return (
-
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 w-full bg-gray-900 bg-gradient-to-r from-secondary/65 via-secondary/90 to-secondary/65 transition-transform duration-300 ${direction === 'up' && previous >= 0 ? 'translate-y-0' : '-translate-y-full'
+      className={`fixed top-0 left-0 right-0 z-50 w-full bg-gradient-to-r from-secondary/80 via-secondary/100 to-secondary/80 transition-transform duration-300 ${previous <= 0 ? 'translate-y-0' : direction === 'up' && previous >= 0 ? 'translate-y-0' : '-translate-y-full'
         }`}
     >
       <div

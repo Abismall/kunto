@@ -35,7 +35,7 @@ const CookieConsent: React.FC = () => {
 
     return (
         <>
-            <div className="dim-overlay">
+            <div className="cookie-dim-overlay">
                 <div className="fixed bottom-10 left-1/2 transform -translate-x-1/2 text-white p-4 rounded-md shadow-lg bg-transparent-80 z-1000 w-[20rem] lg:w-[30rem] h-[12rem]">
                     <div className="flex justify-end">
                     </div>

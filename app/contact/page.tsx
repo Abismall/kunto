@@ -2,9 +2,9 @@
 "use client";
 
 import React from 'react';
-import ProfileCard from '@components/profile/card';
 import { FaCalendarAlt } from 'react-icons/fa';
-import ScheduleForm from '@components/forms/schedule';
+import ProfileCard from '../components/profile/card';
+import ScheduleForm from '../components/forms/schedule';
 const profiles = [
   {
     name: 'John Doe',

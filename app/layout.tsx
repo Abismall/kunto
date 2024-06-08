@@ -1,13 +1,13 @@
 import type { Metadata } from "next";
-import { Oswald } from "next/font/google";
+import { Roboto_Mono } from "next/font/google";
 import "./globals.css";
 
-import AuthProvider from "@components/providers/auth";
-import Navbar from "@components/ui/navbar";
-import Footer from "@components/ui/footer";
-import CookieConsent from "@components/ui/cookie-consent";
+import CookieConsent from "./components/ui/cookie-consent";
+import AuthProvider from "./components/providers/auth";
+import Navbar from "./components/ui/navbar";
 
-const oswald = Oswald({ weight: "700", subsets: ["latin"], });
+
+const Roboto = Roboto_Mono({subsets: ["latin"], weight: "400"});
 
 
 export const metadata: Metadata = {
@@ -22,19 +22,21 @@ export default async function RootLayout({
 }>) {
   return (
 
-    <html lang="en" className={oswald.className}>
-
+    <html lang="en" className={Roboto.className}>
+    
       <body >
         <AuthProvider>
           <header >
             <Navbar />
           </header>
-          <main className={`maint-container`}>
+          <main >
             {children}
             <CookieConsent />
           </main>
+           
+
         </AuthProvider>
-        <Footer />
+   
       </body>
 
     </html>

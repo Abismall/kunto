@@ -1,4 +1,4 @@
-export const content = ["./app/**/*.{js,ts,jsx,tsx}"];
+export const content = ["./app/**/*.{js,ts,jsx,tsx}", "./components/**/*.{js,ts,jsx,tsx}", "./pages/**/*.{js,ts,jsx,tsx}"];
 export const theme = {
   extend: {
     colors: {
@@ -10,7 +10,9 @@ export const theme = {
       'primary-light': '#b8ff00',
       'secondary-dark': '#e03100',
     },
-
+    fontFamily: {
+      sans: ['Roboto', 'sans-serif'],
+    },
     keyframes: {
       slideDown: {
         '0%': { opacity: 0, transform: 'translateY(-20px)' },

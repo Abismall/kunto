@@ -32,7 +32,7 @@ const SocialMediaFeed: React.FC<{ posts: SocialMediaPost[] }> = ({ posts }) => {
 
   return (
     <div className="social-media-feed">
-      <div className="social-media-post">
+      <div >
           <span className='flex'><Image
             src={currentPost.userPicture}
             alt={currentPost.user}

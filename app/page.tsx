@@ -1,12 +1,44 @@
 import Hero from '@components/ui/hero';
-import ServiceDisplay from '@components/services/service-display';
-import SocialMediaFeed, { SocialMediaPost } from '@components/social-media-feed';
+// import ServiceDisplay from '@components/services/service-display';
+import SocialMediaFeed, {type SocialMediaPost } from '@components/social-media-feed';
+import ReactMarkdown from 'react-markdown';
+import rehypeRaw from 'rehype-raw';
+import path from 'path';
+import matter from 'gray-matter';
+import fs from 'fs';
+import Footer from "./components/ui/footer";
+import ServiceDisplay from './components/services/service-display';
+          
+const errorMarkdown = `
+# Error
+
+## Error Loading Service File
+
+We encountered an error while trying to load the service file. Please check the service name and try again.
+
+If the issue persists, contact our support team for assistance.
+
+[Return to Home](http://localhost:3000)
+`;
+
+const fetchContent = (file: string) => {
+  try {
+    const filePath = path.join(process.cwd(), 'public', 'services', file);
+    const fileContent = fs.readFileSync(filePath, 'utf8');
+    const { content } = matter(fileContent);
+    return content;
+  } catch (error) {
+    console.error('Error reading markdown file:', error);
+    return errorMarkdown;
+  }
+};
+const content = fetchContent(`${"liikuntaneuvonta".toLowerCase()}.md`);
 
 export default async function Page() {
   const suggestions = [
     {
       serviceTitle: "Hengitysvalmennus",
-      description: "Tutustu salaisuuksiin, jotka parantavat hengityselimistösi terveyttä tehokkaiden hengitystekniikoiden ja -harjoitusten avulla.",
+      description: "Pranna hengityselimistösi terveyttä tehokkaiden hengitystekniikoiden ja -harjoitusten avulla.",
       imageUrl: "/services/hengitysvalmennus.jpg",
       linkTitle: "Lue lisää",
       href: "/service/hengitysvalmennus"
@@ -21,7 +53,7 @@ export default async function Page() {
     },
     {
       serviceTitle: "Ruokavalio-ohjaus",
-      description: "Hyödynnä ravitsemuksen voimaa asiantuntijavinkkiemme avulla tasapainoisesta ruokavaliosta, superruoista ja ateriasuunnittelusta optimaalisen terveyden saavuttamiseksi.",
+      description: "Hyödynnä ravitsemuksen voimaa asiantuntijavinkkiemme avulla tasapainoisesta ruokavaliosta.",
       imageUrl: "/services/ruokavalio-ohjaus.jpg",
       linkTitle: "Lue lisää",
       href: "/service/ruokavalio-ohjaus"
@@ -74,25 +106,24 @@ export default async function Page() {
 
   return (
     <>
-<div className="w-full bg-gradient-to-r from-black/10 to-black/10">
-  <Hero />
-  <h2 className='flex justify-center p-6 text-dark'>Löydät meidät myös sosiaalisesta mediasta</h2>
-  <div className="flex justify-center space-x-4">
-    <a href="#" className="text-sm text-secondary hover:text-highlight transition duration-300 ease-in-out transform hover:scale-105">Facebook</a>
-    <a href="#" className="text-sm text-secondary hover:text-highlight transition duration-300 ease-in-out transform hover:scale-105">Twitter</a>
-    <a href="#" className="text-sm text-secondary hover:text-highlight transition duration-300 ease-in-out transform hover:scale-105">Instagram</a>
-  </div>
-  <SocialMediaFeed posts={socialMediaPosts} />
+<div >
+        <Hero />
+        <section id="services" className="flex flex-wrap justify-center">
+  {suggestions && suggestions.length > 0 && suggestions.map((service, index) => (
+    <ServiceDisplay
+      key={`${service}-${index}`}
+      service={service}
+    />
+  ))}
+</section>
+  <div className="flex flex-col items-center max-w-screen-lg py-12 rounded-lg shadow-lg min-w-[100%] min-h-[100vh]">
+      <ReactMarkdown className="prose" rehypePlugins={[rehypeRaw]}>
+        {content}
+      </ReactMarkdown>
+    </div>
+        <SocialMediaFeed posts={socialMediaPosts} />
+              <Footer />
 </div>
-      <section id="services" className=''>
-        {suggestions && suggestions.length > 0 && suggestions.map((service, index) => (
-          <ServiceDisplay
-            key={`${service}-${index}`}
-            service={service}
-          />
-        ))}
-      </section>
-
     </>
   );
 };

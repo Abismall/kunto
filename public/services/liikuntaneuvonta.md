@@ -1,14 +1,13 @@
-<div style="text-align: center; margin-bottom: 20px;">
-  <img src="/services/liikuntaneuvonta.jpg" alt="Liikuntaneuvonta" style="display: block; margin: 0 auto; max-width: 100%; height: auto;"/>
-</div>
 
-# <span style="color: #000205;">Liikuntaneuvonta</span>
+
+
+# <span style="color: #000205; font-size: 44px;">Liikuntaneuvonta</span>
 
 ## <span style="color: #e03e00;">Vahvista ja Suojaa Kehoasi</span>
 
 Opi vahvistamaan ja suojaamaan tuki- ja liikuntaelimistöäsi kohdennetuilla harjoituksilla ja oikealla asennolla.
 
-### <span style="color: #e03e00;">Harjoitusohjelmat</span>
+## <span style="color: #e03e00;">Harjoitusohjelmat</span>
 
 - **<span style="color: #000205;">Venyttely:</span>** Päivittäiset venyttelyrutiinit.
 - **<span style="color: #000205;">Voimaharjoittelu:</span>** Koko kehon vahvistavat harjoitukset.
