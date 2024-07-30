@@ -1,14 +1,10 @@
 import type { Metadata } from "next";
-import { Roboto_Mono } from "next/font/google";
-import "./globals.css";
+import "./styles/globals.css";
 
-import CookieConsent from "./components/ui/cookie-consent";
 import AuthProvider from "./components/providers/auth";
+import CookieConsent from "./components/ui/cookie-consent";
+import Footer from "./components/ui/footer";
 import Navbar from "./components/ui/navbar";
-
-
-const Roboto = Roboto_Mono({subsets: ["latin"], weight: "400"});
-
 
 export const metadata: Metadata = {
   title: "Kunto",
@@ -21,24 +17,19 @@ export default async function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-
-    <html lang="en" className={Roboto.className}>
-    
-      <body >
+    <html lang="en">
+      <body>
         <AuthProvider>
-          <header >
+          <header>
             <Navbar />
           </header>
-          <main >
+          <main>
             {children}
             <CookieConsent />
           </main>
-           
-
+          <Footer />
         </AuthProvider>
-   
       </body>
-
     </html>
   );
 }

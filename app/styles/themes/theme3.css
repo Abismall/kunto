@@ -1,0 +1,12 @@
+html[data-theme="theme3"] {
+    --color-primary: #f1f1f2;
+    --color-primary-dark: #d1d1d2;
+    --color-secondary: #a1d6e2;
+    --color-highlight: #1995ad;
+    --color-dark: #333333;
+    --color-primary-light: #ffffff;
+    --color-secondary-light: #ca724c;
+    --color-secondary-dark: #81b5c2;
+    --color-buttons: #bcbabe;
+    --color-typography: #1995ad;
+}

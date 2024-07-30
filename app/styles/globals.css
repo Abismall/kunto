@@ -1,0 +1,27 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Your base theme settings */
+@layer base {
+  html {
+    --color-primary: #319415;
+    --color-primary-dark: #315000;
+    --color-secondary: #e03e00;
+    --color-highlight: #ffc600;
+    --color-dark: #000205;
+    --color-primary-light: #b8ff00;
+    --color-secondary-dark: #e03100;
+    --color-buttons: #ffc600;
+    --color-typography: #ffff;
+  }
+}
+
+@import "themes/theme1.css";
+@import "themes/theme2.css";
+@import "themes/theme3.css";
+
+body {
+  font-family: 'Roboto', sans-serif;
+}

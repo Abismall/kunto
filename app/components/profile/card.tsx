@@ -1,7 +1,6 @@
 import React from 'react';
 import Image from 'next/image';
 import { FaPhoneAlt, FaEnvelope } from 'react-icons/fa';
-import './card.css';
 
 interface ProfileCardProps {
   name: string;
@@ -18,14 +17,14 @@ const ProfileCard: React.FC<ProfileCardProps> = ({ name, phone, email, picture, 
         <Image
           src={picture}
           alt={name}
-          width={150}
-          height={150}
+          width={80}
+          height={80}
           priority
-          className="rounded-full"
+          className="rounded-full object-cover"
         />
       </div>
       <div className="profile-info text-center">
-        <h3 className="profile-name text-lg font-bold mb-1">{name}</h3>
+        <h3 className="profile-name text-xl font-bold mb-1">{name}</h3>
         <p className="profile-title text-sm text-gray-500 mb-2">{title}</p>
         <div className="contact-info flex items-center justify-center mb-1">
           <FaPhoneAlt className="profile-info-icon mr-2 text-gray-400" />

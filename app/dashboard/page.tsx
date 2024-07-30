@@ -1,16 +1,16 @@
-import React from 'react';
-import AdminDashboardLayout from '../components/admin-dashboard/layout';
-import dynamic from 'next/dynamic';
-import "../globals.css"
-const MarkdownEditor = dynamic(() => import('../components/admin-dashboard/markdown-editor'), { ssr: false });
+import React from "react";
+import Section from "../components/ui/section";
 
 const AdminPage: React.FC = () => {
   return (
-  
-    <AdminDashboardLayout>
-      <MarkdownEditor />
-      </AdminDashboardLayout>
-
+    <div>
+      <Section
+        id="yksilovalmennukset"
+        bgColor="bg-gradient-to-r from-gray-200 via-white to-gray-200"
+        textColor="text-dark"
+        children={undefined}
+      ></Section>
+    </div>
   );
 };
 

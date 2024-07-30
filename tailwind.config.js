@@ -1,51 +1,109 @@
-export const content = ["./app/**/*.{js,ts,jsx,tsx}", "./components/**/*.{js,ts,jsx,tsx}", "./pages/**/*.{js,ts,jsx,tsx}"];
-export const theme = {
-  extend: {
-    colors: {
-      primary: '#319415',
-      'primary-dark': '#315000',
-      secondary: '#e03e00',
-      highlight: '#ffc600',
-      dark: '#000205',
-      'primary-light': '#b8ff00',
-      'secondary-dark': '#e03100',
-    },
-    fontFamily: {
-      sans: ['Roboto', 'sans-serif'],
-    },
-    keyframes: {
-      slideDown: {
-        '0%': { opacity: 0, transform: 'translateY(-20px)' },
-        '100%': { opacity: 1, transform: 'translateY(0)' },
+/* eslint-disable @typescript-eslint/no-var-requires */
+/* eslint-disable no-undef */
+const svgToDataUri = require("mini-svg-data-uri");
+const {
+  default: flattenColorPalette,
+} = require("tailwindcss/lib/util/flattenColorPalette");
+
+module.exports = {
+  content: [
+    './app/pages/**/*.{js,ts,jsx,tsx,mdx}',
+    './app/components/**/*.{js,ts,jsx,tsx,mdx}',
+    './app/**/*.{js,ts,jsx,tsx,mdx}',
+    './lib/**/*.{js,ts,jsx,tsx,mdx}',
+    './mocks/**/*.{js,ts,jsx,tsx,mdx}',
+  ],
+  theme: {
+    extend: {
+      screens: {
+        sm: '480px',
+        md: '768px',
+        lg: '976px',
+        xl: '1440px',
       },
-      slideInLeft: {
-        '0%': { opacity: 0, transform: 'translateX(-20px)' },
-        '100%': { opacity: 1, transform: 'translateX(0)' },
+
+      fontFamily: {
+        sans: ['Roboto', 'sans-serif'],
       },
-      slideInRight: {
-        '0%': { opacity: 0, transform: 'translateX(20px)' },
-        '100%': { opacity: 1, transform: 'translateX(0)' },
+      keyframes: {
+        slideDown: {
+          '0%': { opacity: 0, transform: 'translateY(-20px)' },
+          '100%': { opacity: 1, transform: 'translateY(0)' },
+        },
+        slideUp: {
+          '0%': { opacity: 0, transform: 'translateX(-20px)' },
+          '100%': { opacity: 1, transform: 'translateX(0)' },
+        },
+        slideInLeft: {
+          '0%': { opacity: 0, transform: 'translateX(-20px)' },
+          '100%': { opacity: 1, transform: 'translateX(0)' },
+        },
+        slideInRight: {
+          '0%': { opacity: 0, transform: 'translateX(20px)' },
+          '100%': { opacity: 1, transform: 'translateX(0)' },
+        },
+        shrink: {
+          '0%': { transform: 'scaleX(1)', opacity: 1 },
+          '100%': { transform: 'scaleX(0)', opacity: 0 },
+        },
+        expand: {
+          '0%': { transform: 'scaleX(0)', opacity: 0 },
+          '100%': { transform: 'scaleX(1)', opacity: 1 },
+        },
       },
-      shrink: {
-        '0%': { transform: 'scaleX(1)', opacity: 1 },
-        '100%': { transform: 'scaleX(0)', opacity: 0 },
+      animation: {
+        slideDown: 'slideDown 0.5s ease-out forwards',
+        slideUp: 'slideUp 0.5s ease-out forwards',
+        slideDownDelayed: 'slideDown 2s ease-out forwards',
+        slideInLeft: 'slideInLeft 0.5s ease-out forwards',
+        slideInLeftExpand: 'slideInLeft 0.5s ease-out forwards',
+        slideInRight: 'slideInRight 0.5s ease-out forwards',
+        shrink: 'shrink 0.3s ease-out forwards',
+        expand: 'expand 0.3s ease-out forwards',
       },
-      expand: {
-        '0%': { transform: 'scaleX(0)', opacity: 0 },
-        '100%': { transform: 'scaleX(1)', opacity: 1 },
+      spacing: {
+        '128': '32rem',
+        '144': '36rem',
       },
-    },
-    animation: {
-      slideDown: 'slideDown 0.5s ease-out forwards',
-      slideDownDelayed: 'slideDown 2s ease-out forwards',
-      slideInLeft: 'slideInLeft 0.5s ease-out forwards',
-      slideInRight: 'slideInRight 0.5s ease-out forwards',
-      shrink: 'shrink 0.3s ease-out forwards',
-      expand: 'expand 0.3s ease-out forwards',
+      borderRadius: {
+        '4xl': '2rem',
+      },
+      colors: {
+        primary: 'var(--color-primary)',
+        'primary-dark': 'var(--color-primary-dark)',
+        secondary: 'var(--color-secondary)',
+        highlight: 'var(--color-highlight)',
+        dark: 'var(--color-dark)',
+        'primary-light': 'var(--color-primary-light)',
+        'secondary-dark': 'var(--color-secondary-dark)',
+        buttons: 'var(--color-buttons)',
+        typography: 'var(--color-typography)',
+      },
     },
   },
+  plugins: [
+    addVariablesForColors,
+    function ({ matchUtilities, theme }) {
+      matchUtilities(
+        {
+          "bg-dot-thick": (value) => ({
+            backgroundImage: `url("${svgToDataUri(
+              `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="16" height="16" fill="none"><circle fill="${value}" id="pattern-circle" cx="10" cy="10" r="2.5"></circle></svg>`
+            )}")`,
+          }),
+        },
+        { values: flattenColorPalette(theme("backgroundColor")), type: "color" }
+      );
+    },
+  ],
 };
-export const plugins = [
-  // eslint-disable-next-line no-undef
-  require('@tailwindcss/typography'),
-];
+function addVariablesForColors({ addBase, theme }) {
+  let allColors = flattenColorPalette(theme("colors"));
+  let newVars = Object.fromEntries(
+    Object.entries(allColors).map(([key, val]) => [`--${key}`, val])
+  );
+
+  addBase({
+    ":root": newVars,
+  });
+}

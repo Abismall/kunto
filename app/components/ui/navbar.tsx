@@ -1,106 +1,126 @@
-'use client';
+/* eslint-disable @typescript-eslint/no-unused-vars */
+"use client";
 
-import Link from 'next/link';
-import React, { useState, useEffect } from 'react';
+import { cn } from "@/lib/utils";
+import React, { useState, useEffect, useRef } from "react";
+import {
+  Menu,
+  MenuItem,
+  HoveredLink,
+  ComponentItem,
+  PictureItem,
+} from "./navbar-menu";
+import { changeTheme } from "@/lib/theme";
+import OALogo from "./oa-logo";
 
-const Navbar: React.FC = () => {
-  const [isOpen, setIsOpen] = useState(false);
-  const [direction, setDirection] = useState<'up' | 'down'>('up');
-  const [previous, setPrevious] = useState(0)
+const Navbar = ({ className }: { className?: string }) => {
+  const [active, setActive] = useState<string | null>(null);
+  const [direction, setDirection] = useState<"up" | "down">("up");
+  const [previous, setPrevious] = useState(0);
+  const [logoVariant, setLogoVariant] = useState<"flat" | "circle">("circle");
+  const closeTimeout = useRef<NodeJS.Timeout | null>(null);
+
   useEffect(() => {
     const handler = () => {
-      setDirection(window.scrollY > previous ? 'down' : 'up')
-      setPrevious(window.scrollY)
-    }
-    window.addEventListener('scroll', handler);
-    return () => window.removeEventListener('scroll', handler);
+      setDirection(window.scrollY > previous ? "down" : "up");
+      setPrevious(window.scrollY);
+    };
+    window.addEventListener("scroll", handler);
+    return () => window.removeEventListener("scroll", handler);
   }, [previous]);
- 
+
+  const handleMouseEnter = (item: string) => {
+    if (closeTimeout.current) {
+      clearTimeout(closeTimeout.current);
+    }
+    setActive(item);
+  };
+
+  const handleMouseLeave = () => {
+    closeTimeout.current = setTimeout(() => {
+      setActive(null);
+    }, 300); // delay in milliseconds
+  };
+
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 w-full bg-gradient-to-r from-secondary/80 via-secondary/100 to-secondary/80 transition-transform duration-300 ${previous <= 0 ? 'translate-y-0' : direction === 'up' && previous >= 0 ? 'translate-y-0' : '-translate-y-full'
-        }`}
+      className={`navbar fixed top-0 z-50 w-full transition-transform duration-300 ${
+        previous <= 0
+          ? "translate-y-0"
+          : direction === "up" && previous >= 0
+            ? "translate-y-0"
+            : "-translate-y-full"
+      }`}
+      style={{
+        background:
+          "linear-gradient(to right, var(--color-secondary), var(--color-secondary-dark))",
+      }}
     >
       <div
-        className='relative max-w-[85rem] w-full mx-auto px-4 sm:flex sm:items-center sm:justify-between sm:px-6 lg:px-8'
-        aria-label='Global'
+        className={cn(
+          "relative w-full flex justify-center items-center px-4 sm:px-6 lg:px-8",
+          className
+        )}
       >
-        <div className='flex items-center justify-between w-full'>
-          <Link
-            className={`flex text-2xl gap-2 items-center justify-center font-semibold text-white ${isOpen ? 'hidden sm:flex' : 'flex'
-              }`}
-            href='/'
-            aria-label='Brand'
+        <p className="absolute left-4 text-2xl shadow-lg text-typography">
+          Kuntoäijät
+        </p>
+        <Menu>
+          <div
+            onMouseEnter={() => handleMouseEnter("Navigointi")}
+            onMouseLeave={handleMouseLeave}
           >
-            <p className='flex-shrink-0 text-2xl shadow-lg'>Kuntoäijät</p>
-          </Link>
-          <div className='sm:hidden'>
-            <button
-              type='button'
-              className={`hs-collapse-toggle size-9 flex justify-center items-center gap-x-2 text-sm font-semibold rounded-lg text-white ${isOpen ? 'active' : ''
-                }`}
-              onClick={() => setIsOpen(!isOpen)}
-              aria-controls='navbar-collapse-with-animation'
-              aria-label='Toggle navigation'
-            >
-              {isOpen ? (
-                <svg
-                  className='flex-shrink-0 size-4 fixed right-5'
-                  xmlns='http://www.w3.org/2000/svg'
-                  width='24'
-                  height='24'
-                  viewBox='0 0 24 24'
-                  fill='none'
-                  stroke='white'
-                  strokeWidth='2'
-                  strokeLinecap='round'
-                  strokeLinejoin='round'
-                >
-                  <path d='M18 6L6 18'></path>
-                  <path d='M6 6l12 12'></path>
-                </svg>
-              ) : (
-                <svg
-                  className='flex-shrink-0 size-4'
-                  xmlns='http://www.w3.org/2000/svg'
-                  width='24'
-                  height='24'
-                  viewBox='0 0 24 24'
-                  fill='none'
-                  stroke='white'
-                  strokeWidth='2'
-                  strokeLinecap='round'
-                  strokeLinejoin='round'
-                >
-                  <line x1='3' y1='6' x2='21' y2='6'></line>
-                  <line x1='3' y1='12' x2='21' y2='12'></line>
-                  <line x1='3' y1='18' x2='21' y2='18'></line>
-                </svg>
-              )}
-            </button>
+            <MenuItem setActive={setActive} active={active} item="Navigointi">
+              <HoveredLink href="/">Etusivu</HoveredLink>
+              <HoveredLink href="/dashboard">Hallintapaneeli</HoveredLink>
+            </MenuItem>
           </div>
-        </div>
-        <div
-          id='navbar-collapse-with-animation'
-          className={`hs-collapse ${isOpen ? 'flex' : 'hidden'} flex-col items-center justify-center h-screen w-full overflow-y-auto transition-all duration-300 basis-full grow sm:block sm:h-auto sm:overflow-visible`}
-        >
-          <div className='flex flex-col items-center gap-y-4 mt-5 sm:flex-row sm:items-center sm:justify-end sm:gap-x-7 sm:mt-0 sm:ps-7'>
-            <Link
-              onClick={() => setIsOpen(false)}
-              className='text-white hover:text-highlight sm:py-3 px-3 py-2 rounded transition duration-300 ease-in-out transform hover:scale-105'
-              href='/'
-            >
-              <p className='flex-shrink-0 text-2xl shadow-lg'>Etusivu</p>
-            </Link>
-            <Link
-              onClick={() => setIsOpen(false)}
-              className='text-2xl text-white hover:text-highlight sm:py-3 px-3 py-2 rounded transition duration-300 ease-in-out transform hover:scale-105'
-              href='/#services'
-            >
-              <p className='flex-shrink-0 text-2xl shadow-lg'>Palvelut</p>
-            </Link>
+          <div
+            onMouseEnter={() => handleMouseEnter("Themes")}
+            onMouseLeave={handleMouseLeave}
+          >
+            <MenuItem setActive={setActive} active={active} item="Themes">
+              <div className="flex flex-col">
+                <PictureItem
+                  title="Default theme"
+                  onClick={() => changeTheme("")}
+                  src="/theme-1-palette.png"
+                />
+                <PictureItem
+                  title="Theme 1"
+                  onClick={() => changeTheme("theme1")}
+                  src="/theme-1-palette.png"
+                />
+                <PictureItem
+                  title="Theme 2"
+                  onClick={() => changeTheme("theme2")}
+                  src="/theme-1-palette.png"
+                />
+                <PictureItem
+                  title="Theme 3"
+                  onClick={() => changeTheme("theme3")}
+                  src="/theme-1-palette.png"
+                />
+              </div>
+            </MenuItem>
           </div>
-        </div>
+          <div
+            onMouseEnter={() => handleMouseEnter("Logo")}
+            onMouseLeave={handleMouseLeave}
+          >
+            <MenuItem setActive={setActive} active={active} item="Logo">
+              <ComponentItem
+                title={logoVariant === "circle" ? "Flat" : "Circle"}
+                onClick={() =>
+                  logoVariant === "circle"
+                    ? setLogoVariant("flat")
+                    : setLogoVariant("circle")
+                }
+                Comp={<OALogo variant={logoVariant} locale={"fi"} />}
+              />
+            </MenuItem>
+          </div>
+        </Menu>
       </div>
     </nav>
   );
