@@ -18,6 +18,10 @@ const Navbar = ({ className }: { className?: string }) => {
   const [direction, setDirection] = useState<"up" | "down">("up");
   const [previous, setPrevious] = useState(0);
   const [logoVariant, setLogoVariant] = useState<"flat" | "circle">("circle");
+  const [logoLocale, setLogoLocale] = useState<"fi" | "sve" | "en">(
+    ["fi", "sve", "en"][Math.floor(Math.random() * 3)] as "fi" | "sve" | "en"
+  );
+
   const closeTimeout = useRef<NodeJS.Timeout | null>(null);
 
   useEffect(() => {
@@ -113,10 +117,22 @@ const Navbar = ({ className }: { className?: string }) => {
                 title={logoVariant === "circle" ? "Flat" : "Circle"}
                 onClick={() =>
                   logoVariant === "circle"
-                    ? setLogoVariant("flat")
-                    : setLogoVariant("circle")
+                    ? (setLogoVariant("flat"),
+                      setLogoLocale(
+                        ["fi", "sve", "en"][Math.floor(Math.random() * 3)] as
+                          | "fi"
+                          | "sve"
+                          | "en"
+                      ))
+                    : (setLogoVariant("circle"),
+                      setLogoLocale(
+                        ["fi", "sve", "en"][Math.floor(Math.random() * 3)] as
+                          | "fi"
+                          | "sve"
+                          | "en"
+                      ))
                 }
-                Comp={<OALogo variant={logoVariant} locale={"fi"} />}
+                Comp={<OALogo variant={logoVariant} locale={logoLocale} />}
               />
             </MenuItem>
           </div>
