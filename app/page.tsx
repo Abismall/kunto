@@ -10,8 +10,8 @@ export default function Page() {
   return (
     <>
       <Hero />
+      <Lamp upperText={`Health and happiness.`} lowerText={`The right way.`} />
 
-      <Lamp upperText={`Health and happines.`} lowerText={`The right way.`} />
       <div className="mx-auto">
         <ProfileStripe />
       </div>
@@ -23,6 +23,7 @@ export default function Page() {
       >
         <SingleTraining />
       </Section>
+
       <Section
         id="ryhmavalmennukset"
         bgColor="bg-gradient-to-r from-gray-200 via-white to-gray-200"
