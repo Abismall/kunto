@@ -6,7 +6,7 @@ const cards = [
   {
     description: "Henkilökohtainen treeniohjelma 8 viikkoa xx€",
     title: "Henkilökohtainen treeniohjelma",
-    src: <FaDumbbell className="text-secondary-dark text-6xl" />,
+    src: <FaDumbbell className="text-6xl" />,
     ctaText: "Learn More",
     ctaLink: "#",
     content: () => (
@@ -20,7 +20,7 @@ const cards = [
   {
     description: "Henkilökohtainen elämäntapavalmennus 1kk xx€",
     title: "Henkilökohtainen elämäntapavalmennus",
-    src: <FaHeartbeat className="text-secondary-dark text-6xl" />,
+    src: <FaHeartbeat className="text-6xl" />,
     ctaText: "Learn More",
     ctaLink: "#",
     content: () => (
@@ -34,7 +34,7 @@ const cards = [
   {
     description: "Ohjattu treeni xx€/h",
     title: "Ohjattu treeni",
-    src: <FaRunning className="text-secondary-dark text-6xl" />,
+    src: <FaRunning className="text-6xl" />,
     ctaText: "Learn More",
     ctaLink: "#",
     content: () => <p>Hintaan lisätään valitun salin käyntimaksut.</p>,
@@ -42,7 +42,7 @@ const cards = [
   {
     description: "Henkilökohtainen ravinto-ohjelma 12 viikkoa xx€",
     title: "Henkilökohtainen ravinto-ohjelma",
-    src: <FaAppleAlt className="text-secondary-dark text-6xl" />,
+    src: <FaAppleAlt className="text-6xl" />,
     ctaText: "Learn More",
     ctaLink: "#",
     content: () => (
@@ -51,17 +51,12 @@ const cards = [
   },
 ];
 
-const SingleTraining: React.FC = () => {
+const ServiceDisplayExpandableCards: React.FC = () => {
   return (
     <div>
-      <div className="text-center relative">
-        <h2 className="text-5xl font-extrabold mb-6 text-primary">
-          ALKAVAT YKSILÖVALMENNUKSET
-        </h2>
-      </div>
       <ExpandableCard cards={cards} />
     </div>
   );
 };
 
-export default SingleTraining;
+export default ServiceDisplayExpandableCards;
