@@ -1,7 +1,9 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import React from "react";
+import { CardContainer, CardBody, CardItem } from "./3d-card";
 
 interface Trainer {
   name: string;
@@ -42,27 +44,47 @@ const ProfileStripe: React.FC = () => {
       />
       <div className="relative w-full max-w-6xl mx-auto flex flex-wrap justify-around space-y-6 md:space-y-0 md:space-x-6 px-6">
         {trainers.map((trainer, index) => (
-          <div
-            key={index}
-            className="bg-white bg-opacity-80 backdrop-filter backdrop-blur-lg p-4 rounded-lg shadow-lg text-center w-full md:w-1/2 lg:w-1/3 relative z-10 border border-secondary"
-          >
-            <Image
-              src={trainer.picture}
-              alt={trainer.name}
-              width={80}
-              height={80}
-              className="rounded-full mx-auto mb-4"
-            />
-            <h2 className="text-xl font-semibold mb-2">{trainer.name}</h2>
-            <p className="text-gray-600 mb-4">{trainer.title}</p>
-            <p className="text-gray-700">{trainer.description}</p>
-            <p className="text-gray-700 mt-2">
-              <strong>Phone:</strong> {trainer.phone}
-            </p>
-            <p className="text-gray-700">
-              <strong>Email:</strong> {trainer.email}
-            </p>
-          </div>
+          <CardContainer className="inter-var" key={`trainer-${index}`}>
+            <CardBody className="bg-light relative group/card border-primary-dark w-auto sm:w-[30rem] h-auto rounded-xl p-6 border">
+              <CardItem translateZ="50" className="text-xl font-bold text-dark">
+                {trainer.name}
+              </CardItem>
+              <CardItem
+                as="p"
+                translateZ="60"
+                className="text-dark text-sm max-w-sm mt-2"
+              >
+                {trainer.description}
+              </CardItem>
+              <CardItem translateZ="40" className="w-full mt-4">
+                <Image
+                  src={trainer.picture}
+                  height="1000"
+                  width="1000"
+                  className="h-60 w-full object-cover rounded-xl group-hover/card:shadow-xl"
+                  alt="thumbnail"
+                />
+              </CardItem>
+              <div className="flex justify-between items-center mt-20">
+                <CardItem
+                  translateZ={20}
+                  as={Link}
+                  href=""
+                  target="__blank"
+                  className="px-4 py-2 rounded-xl text-xs font-normal text-dark"
+                >
+                  {trainer.email}
+                </CardItem>
+                <CardItem
+                  translateZ={20}
+                  as="button"
+                  className="px-4 py-2 rounded-xl bg-primary text-white text-xs font-bold"
+                >
+                  {trainer.title}
+                </CardItem>
+              </div>
+            </CardBody>
+          </CardContainer>
         ))}
       </div>
     </div>

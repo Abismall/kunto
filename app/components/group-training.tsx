@@ -5,18 +5,18 @@ const GroupTraining: React.FC = () => {
   return (
     <div>
       <div className="text-center relative z-10">
-        <h2 className="text-5xl font-extrabold mb-6 text-secondary">
+        <h2 className="text-5xl font-extrabold mb-6 text-primary">
           ALKAVAT RYHMÄVALMENNUKSET
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 text-left">
           <div className="p-6 border border-secondary rounded-lg shadow-lg bg-white bg-opacity-80 hover:bg-opacity-100 transition duration-300">
             <div className="flex items-center mb-4">
-              <FaUsers className="text-secondary text-3xl mr-3" />
+              <FaUsers className="text-secondary-dark text-3xl mr-3" />
               <h3 className="text-2xl font-bold">
                 Nuorten lihasvoimatreenin alkeet 8 viikkoa xx€
               </h3>
             </div>
-            <p className="mb-4 text-lg text-secondary">
+            <p className="mb-4 text-lg">
               Kurssilla ohjataan nuorta treenaamaan turvallisesti, kehitetään
               motoriikkaa ja lihashallintaa sekä tutustutaan
               kuntosaliharjoittelun perusliikkeisiin
@@ -27,7 +27,7 @@ const GroupTraining: React.FC = () => {
           </div>
           <div className="p-6 border border-secondary rounded-lg shadow-lg bg-white bg-opacity-80 hover:bg-opacity-100 transition duration-300">
             <div className="flex items-center mb-4">
-              <FaRunning className="text-secondary text-3xl mr-3" />
+              <FaRunning className="text-secondary-dark text-3xl mr-3" />
               <h3 className="text-2xl font-bold">
                 Jaksamista arkeen 12 viikkoa xx€
               </h3>
@@ -46,7 +46,7 @@ const GroupTraining: React.FC = () => {
           </div>
           <div className="p-6 border border-secondary rounded-lg shadow-lg bg-white bg-opacity-80 hover:bg-opacity-100 transition duration-300">
             <div className="flex items-center mb-4">
-              <FaBriefcase className="text-secondary text-3xl mr-3" />
+              <FaBriefcase className="text-secondary-dark text-3xl mr-3" />
               <h3 className="text-2xl font-bold">YRITYSPALVELUT</h3>
             </div>
             <p className="mb-4 text-lg">

@@ -5,6 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { PermissionCookie, DispatchEvent } from "./cookie-consent";
 import { HiChevronDoubleDown, HiChevronDoubleUp } from "react-icons/hi";
+import { TextGenerateEffect } from "../text-generate-effect";
 
 const Skeleton = () => {
   return (
@@ -30,16 +31,7 @@ const Skeleton = () => {
   );
 };
 
-type RowBarProps = {
-  href: string;
-  title: string;
-};
-
-type HeroProps = {
-  rowbar: RowBarProps[];
-};
-
-export default function Hero({ rowbar }: HeroProps) {
+export default function Hero() {
   const [show, setShow] = useState(false);
   const [direction, setDirection] = useState<"up" | "down">("down");
   const [isWideScreen, setIsWideScreen] = useState(false);
@@ -83,7 +75,7 @@ export default function Hero({ rowbar }: HeroProps) {
     return (
       <div className="fullwidth">
         <section id="hero" className="relative">
-          <div className="relative text-primary-light w-full h-screen">
+          <div className="relative text-primary w-full h-screen">
             <Image
               src="/treadmill-in-modern-gym.jpg"
               alt="Background"
@@ -100,18 +92,29 @@ export default function Hero({ rowbar }: HeroProps) {
             />
             <div className="container flex px-5 py-24 pt-56 md:flex-row flex-col items-center justify-center md:justify-start mx-auto relative z-30">
               <div className="lg:flex-grow md:w-1/2 lg:pr-24 md:pr-16 flex flex-col md:items-start md:text-left mb-14 md:mb-0 items-center text-center">
-                <h1
-                  className={`sm:text-2xl text-3xl lg:text-8xl mb-4 animate-slideDown`}
-                >
-                  Ipsum dolor sit amet
-                </h1>
+                <TextGenerateEffect
+                  filter={false}
+                  duration={0.1}
+                  className="text-6xl text-primary-dark"
+                  words={"Ipsum dolor sit amet."}
+                />
 
+                <div className="text-container">
+                  <TextGenerateEffect
+                    filter={true}
+                    duration={0.2}
+                    className="text-sm"
+                    words={
+                      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
+                    }
+                  />
+                </div>
                 <div className="flex flex-col justify-center md:justify-start gap-6 w-[20rem] links-container">
                   <Link
                     href="#services"
-                    className={`inline-flex border border-secondary py-2 px-6 md:py-3 md:px-8 focus:outline-none rounded text-lg md:text-3xl opacity-0 animate-slideInLeft hover:bg-secondary-dark hover:text-white transition-colors duration-500 ease-in-out link`}
+                    className={`inline-flex border border-primary-dark py-2 px-6 md:py-3 md:px-8 focus:outline-none rounded text-lg md:text-3xl opacity-0 animate-slideInLeft hover:bg-primary-dark hover:text-white transition-colors duration-500 ease-in-out link`}
                     style={{
-                      animationDelay: "0.8s",
+                      animationDelay: "4.5s",
                       animationFillMode: "forwards",
                       opacity: "0",
                     }}
@@ -120,47 +123,15 @@ export default function Hero({ rowbar }: HeroProps) {
                   </Link>
                   <Link
                     href="/contact"
-                    className={`inline-flex border border-secondary py-2 px-6 md:py-3 md:px-8 focus:outline-none rounded text-lg md:text-3xl opacity-0 animate-slideInRight hover:bg-secondary-dark hover:text-white transition-colors duration-500 ease-in-out link`}
+                    className={`inline-flex border border-primary-dark py-2 px-6 md:py-3 md:px-8 focus:outline-none rounded text-lg md:text-3xl opacity-0 animate-slideInRight hover:bg-primary-dark hover:text-white transition-colors duration-500 ease-in-out link`}
                     style={{
-                      animationDelay: "0.8s",
+                      animationDelay: "4.5s",
                       animationFillMode: "forwards",
                       opacity: "0",
                     }}
                   >
                     <p className="mx-auto">Ajanvaraus</p>
                   </Link>
-                </div>
-                <div className="text-container">
-                  <p
-                    className={`mt-4 lg:text-2xl opacity-0 animate-slideDown text-typography`}
-                    style={{
-                      animationDelay: "0.75s",
-                      animationFillMode: "forwards",
-                      opacity: "0",
-                    }}
-                  >
-                    {
-                      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
-                    }
-                  </p>
-                </div>
-                <div
-                  className="flex flex-col md:flex-row justify-center md:justify-start mt-10 space-y-4 md:space-y-0 md:space-x-4 animate-slideDown lg:animate-slideInLeft"
-                  style={{
-                    animationDelay: "0.95s",
-                    animationFillMode: "forwards",
-                    opacity: "0",
-                  }}
-                >
-                  {rowbar.map((button, index) => (
-                    <Link
-                      key={index}
-                      href={button.href}
-                      className="inline-flex border border-secondary py-2 px-6 md:py-3 md:px-8 focus:outline-none rounded text-lg md:text-3xl hover:bg-secondary hover:text-white transition-colors duration-500 ease-in-out"
-                    >
-                      {button.title}
-                    </Link>
-                  ))}
                 </div>
               </div>
             </div>
@@ -181,9 +152,9 @@ export default function Hero({ rowbar }: HeroProps) {
                     }}
                   >
                     <HiChevronDoubleUp
-                      className={`w-8 h-8 mx-auto text-secondary`}
+                      className={`w-8 h-8 mx-auto text-primary`}
                     />
-                    <p className="text-lg md:text-2xl mt-2 text-secondary">
+                    <p className="text-lg md:text-2xl mt-2 text-primary">
                       Lue lisää
                     </p>
                   </span>
@@ -196,18 +167,18 @@ export default function Hero({ rowbar }: HeroProps) {
                       opacity: "0",
                     }}
                   >
-                    <p className="text-lg md:text-2xl mb-2 text-secondary">
+                    <p className="text-lg md:text-2xl mb-2 text-primary">
                       Lue lisää
                     </p>
                     <HiChevronDoubleDown
-                      className={`w-8 h-8 mx-auto text-secondary`}
+                      className={`w-8 h-8 mx-auto text-primary`}
                     />
                   </span>
                 )}
               </button>
             </div>
           </div>
-          <div className="absolute bottom-0 w-full h-2 bg-gradient-to-r from-white/0 via-secondary to-secondary/100 z-20" />
+          <div className="absolute bottom-0 w-full h-2 bg-gradient-to-r from-white/0 via-primary to-primary/100 z-20" />
         </section>
 
         <style jsx>{`

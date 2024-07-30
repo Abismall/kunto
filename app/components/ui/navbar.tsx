@@ -57,7 +57,7 @@ const Navbar = ({ className }: { className?: string }) => {
       }`}
       style={{
         background:
-          "linear-gradient(to right, var(--color-secondary), var(--color-secondary-dark))",
+          "linear-gradient(to right, var(--color-primary), var(--color-primary-dark))",
       }}
     >
       <div

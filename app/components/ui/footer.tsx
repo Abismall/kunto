@@ -4,7 +4,7 @@ import React from "react";
 
 export default function Footer() {
   return (
-    <footer className="bg-gradient-to-b from-gray-400 via-gray to-secondary-dark text-typography py-4">
+    <footer className="bg-gradient-to-b from-gray-400 via-gray to-primary-dark text-typography py-4">
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1">
           <div className="pb-4 pt-4">

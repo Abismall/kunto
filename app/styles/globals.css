@@ -6,14 +6,13 @@
 /* Your base theme settings */
 @layer base {
   html {
-    --color-primary: #319415;
-    --color-primary-dark: #315000;
-    --color-secondary: #e03e00;
-    --color-highlight: #ffc600;
-    --color-dark: #000205;
-    --color-primary-light: #b8ff00;
-    --color-secondary-dark: #e03100;
-    --color-buttons: #ffc600;
+    --color-primary: #e03e00;
+    --color-primary-dark: #e03100;
+    --color-secondary: #b8ff00;
+    --color-secondary-dark: #577908;
+    --color-buttons: #da4a12;
+    --color-dark: #4b4e53;
+    --color-light: #e7dcdc;
     --color-typography: #ffff;
   }
 }

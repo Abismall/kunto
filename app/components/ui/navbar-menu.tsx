@@ -7,8 +7,8 @@ import Image from "next/image";
 
 const transition = {
   type: "spring",
-  mass: 0.5,
-  damping: 11.5,
+  mass: 0.8,
+  damping: 10,
   stiffness: 100,
   restDelta: 0.001,
   restSpeed: 0.001,
@@ -66,7 +66,7 @@ export const MenuItem = ({
 
 export const Menu = ({ children }: { children: React.ReactNode }) => {
   return (
-    <nav className="relative rounded-full border border-transparent bg-secondary shadow-input flex justify-center space-x-4 px-2 py-2">
+    <nav className="relative rounded-full border border-transparent bg-primary shadow-input flex justify-center space-x-4 px-2 py-2">
       {children}
     </nav>
   );
@@ -91,7 +91,9 @@ export const PictureItem = ({
         className="flex-shrink-0 rounded-md shadow-2xl"
       />
       <div>
-        <h4 className="text-xl font-bold mb-1 text-typography">{title}</h4>
+        <h4 className="text-xl font-bold mb-1 text-typography hover:text-primary">
+          {title}
+        </h4>
       </div>
     </button>
   );
@@ -117,14 +119,14 @@ export const ComponentItem = ({
 
 export const HoveredLink = ({ children, ...rest }: any) => {
   return (
-    <Link {...rest} className="text-typography hover:text-highlight">
+    <Link {...rest} className="text-typography hover:text-primary">
       {children}
     </Link>
   );
 };
 export const HoveredButton = ({ children, ...rest }: any) => {
   return (
-    <button {...rest} className="text-typography hover:text-highlight">
+    <button {...rest} className="text-typography hover:text-primary">
       {children}
     </button>
   );
