@@ -66,9 +66,6 @@ const Navbar = ({ className }: { className?: string }) => {
           className
         )}
       >
-        <p className="absolute left-4 text-2xl shadow-lg text-typography">
-          Kuntoäijät
-        </p>
         <div className="flex flex-row">
           <HoveredLink className="pr-2 hover:text-dark" href="/">
             Etusivu

@@ -4,7 +4,6 @@ import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { TextGenerateEffect } from "../text-generate-effect";
-import { HiChevronDoubleDown } from "react-icons/hi";
 
 const Skeleton = () => {
   return (
@@ -32,21 +31,9 @@ const Skeleton = () => {
 
 export default function Hero() {
   const [show, setShow] = useState(false);
-  const [visible, setVisible] = useState(true);
-
-  const toggleTransition = () =>
-    window.scrollTo({ top: 950, behavior: "smooth" });
 
   useEffect(() => {
     setShow(true);
-  }, []);
-
-  useEffect(() => {
-    const handler = () => {
-      if (window.scrollY > 650) setVisible(false);
-    };
-    window.addEventListener("scroll", handler);
-    return () => window.removeEventListener("scroll", handler);
   }, []);
 
   if (!show) return <Skeleton />;
@@ -102,31 +89,6 @@ export default function Hero() {
                   </p>
                 </div>
               </div>
-            </div>
-            <div
-              className={`absolute bottom-5 left-1/2 transform -translate-x-1/2 flex flex-col items-center z-30`}
-            >
-              {visible && (
-                <span
-                  className="opacity-0 animate-slideDown hover:text-white transition-all duration-800 ease-in-out"
-                  style={{
-                    animationDelay: "1s",
-                    animationFillMode: "forwards",
-                  }}
-                  onClick={toggleTransition}
-                >
-                  <p className="text-lg md:text-2xl mb-2 ">
-                    <TextGenerateEffect
-                      filter={true}
-                      duration={2}
-                      delay={0.01}
-                      className="text-sm"
-                      words={"Lisää"}
-                    />
-                    <HiChevronDoubleDown className="w-8 h-8 mx-auto" />
-                  </p>
-                </span>
-              )}
             </div>
           </div>
           <div className="absolute bottom-0 w-full h-2 bg-gradient-to-r from-white/0 via-primary to-primary/100 z-20" />

@@ -134,7 +134,12 @@ export default function Page() {
   return (
     <>
       <Hero />
-      <Lamp upperText={`Health and happiness.`} lowerText={`The right way.`} />
+      <section id="lamp">
+        <Lamp
+          upperText={`Health and happiness.`}
+          lowerText={`The right way.`}
+        />
+      </section>
 
       <div className="mx-auto">
         <ProfileStripe />
