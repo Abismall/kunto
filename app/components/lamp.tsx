@@ -38,14 +38,14 @@ export const LampContainer = ({
   return (
     <div
       className={cn(
-        "relative flex min-h-[63vh] md:min-h-[80vh] flex-col items-center justify-center overflow-hidden bg-slate-950 w-full rounded-md z-0",
+        "relative flex min-h-[100vh] flex-col items-center justify-center overflow-hidden bg-slate-950 w-full rounded-md z-0",
         className
       )}
     >
       <div className="relative flex w-full flex-1 scale-y-125 items-center justify-center isolate z-0 opacity-40">
         <motion.div
-          initial={{ opacity: 0.5, width: "15rem" }}
-          whileInView={{ opacity: 1, width: "30rem" }}
+          initial={{ opacity: 0.5, width: "5rem" }}
+          whileInView={{ opacity: 1, width: "15rem" }}
           transition={{
             delay: 0.3,
             duration: 0.8,
@@ -60,8 +60,8 @@ export const LampContainer = ({
           <div className="absolute  w-40 h-[100%] left-0 bg-slate-950  bottom-0 z-20 [mask-image:linear-gradient(to_right,white,transparent)]" />
         </motion.div>
         <motion.div
-          initial={{ opacity: 0.5, width: "15rem" }}
-          whileInView={{ opacity: 1, width: "30rem" }}
+          initial={{ opacity: 0.5, width: "5rem" }}
+          whileInView={{ opacity: 1, width: "15rem" }}
           transition={{
             delay: 0.3,
             duration: 0.8,
