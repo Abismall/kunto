@@ -3,9 +3,8 @@
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { PermissionCookie, DispatchEvent } from "./cookie-consent";
-import { HiChevronDoubleDown, HiChevronDoubleUp } from "react-icons/hi";
 import { TextGenerateEffect } from "../text-generate-effect";
+import { HiChevronDoubleDown } from "react-icons/hi";
 
 const Skeleton = () => {
   return (
@@ -33,41 +32,21 @@ const Skeleton = () => {
 
 export default function Hero() {
   const [show, setShow] = useState(false);
-  const [direction, setDirection] = useState<"up" | "down">("down");
-  const [isWideScreen, setIsWideScreen] = useState(false);
+  const [visible, setVisible] = useState(true);
 
-  const toggleReadMore = () => {
-    if (direction === "down") window.scrollTo({ top: 670, behavior: "smooth" });
-    else window.scrollTo({ top: 0, behavior: "smooth" });
-  };
+  const toggleTransition = () =>
+    window.scrollTo({ top: 950, behavior: "smooth" });
 
   useEffect(() => {
-    const callback = () => setShow(true);
-
-    if (window.localStorage.getItem(PermissionCookie)) callback();
-    else window.addEventListener(DispatchEvent.CookieConsentAdded, callback);
-
-    return () =>
-      window.removeEventListener(DispatchEvent.CookieConsentAdded, callback);
+    setShow(true);
   }, []);
 
   useEffect(() => {
     const handler = () => {
-      if (window.scrollY < 670) setDirection("down");
-      else setDirection("up");
+      if (window.scrollY > 650) setVisible(false);
     };
     window.addEventListener("scroll", handler);
     return () => window.removeEventListener("scroll", handler);
-  }, []);
-  useEffect(() => {
-    if (window) {
-      setIsWideScreen(window.innerWidth >= 1440);
-    }
-    const resizeHandler = () => {
-      setIsWideScreen(window.innerWidth >= 1440);
-    };
-    window.addEventListener("resize", resizeHandler);
-    return () => window.removeEventListener("resize", resizeHandler);
   }, []);
 
   if (!show) return <Skeleton />;
@@ -90,92 +69,64 @@ export default function Hero() {
                 background: `linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6))`,
               }}
             />
-            <div className="container flex px-5 py-24 pt-56 md:flex-row flex-col items-center justify-center md:justify-start mx-auto relative z-30">
-              <div className="lg:flex-grow md:w-1/2 lg:pr-24 md:pr-16 flex flex-col md:items-start md:text-left mb-14 md:mb-0 items-center text-center">
-                <TextGenerateEffect
-                  filter={false}
-                  duration={0.1}
-                  className="text-6xl text-primary-dark"
-                  words={"Ipsum dolor sit amet."}
-                />
-
+            <div className="container flex px-5 pt-28 md:pt-56 md:flex-row flex-col items-center justify-center md:justify-start mx-auto relative z-30">
+              <div className="lg:flex-grow md:w-1/2 lg:pr-24 md:pr-16 flex flex-col md:items-start md:text-left md:mb-0 items-center text-center">
                 <div className="text-container">
-                  <TextGenerateEffect
-                    filter={true}
-                    duration={0.2}
-                    className="text-sm"
-                    words={
-                      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
-                    }
-                  />
-                </div>
-                <div className="flex flex-col justify-center md:justify-start gap-6 w-[20rem] links-container">
-                  <Link
-                    href="#services"
-                    className={`inline-flex border border-primary-dark py-2 px-6 md:py-3 md:px-8 focus:outline-none rounded text-lg md:text-3xl opacity-0 animate-slideInLeft hover:bg-primary-dark hover:text-white transition-colors duration-500 ease-in-out link`}
-                    style={{
-                      animationDelay: "4.5s",
-                      animationFillMode: "forwards",
-                      opacity: "0",
-                    }}
-                  >
-                    <p className="text-center w-full">Palvelut</p>
-                  </Link>
-                  <Link
-                    href="/contact"
-                    className={`inline-flex border border-primary-dark py-2 px-6 md:py-3 md:px-8 focus:outline-none rounded text-lg md:text-3xl opacity-0 animate-slideInRight hover:bg-primary-dark hover:text-white transition-colors duration-500 ease-in-out link`}
-                    style={{
-                      animationDelay: "4.5s",
-                      animationFillMode: "forwards",
-                      opacity: "0",
-                    }}
-                  >
-                    <p className="mx-auto">Ajanvaraus</p>
-                  </Link>
+                  <h3 className="text-6xl text-primary-dark opacity-0 animate-slideDown">
+                    Ipsum dolor sit amet.
+                  </h3>
+                  <div className="flex flex-col justify-center pt-4 md:justify-start gap-6 w-[20rem] links-container">
+                    <Link
+                      href="#services"
+                      className={`inline-flex border border-primary-dark py-2 px-6 md:py-3 md:px-8 focus:outline-none rounded text-lg md:text-3xl opacity-0 animate-slideInLeft hover:bg-primary-dark hover:text-white transition-colors duration-500 ease-in-out link`}
+                    >
+                      <p className="text-center w-full">Palvelut</p>
+                    </Link>
+                    <Link
+                      href="/contact"
+                      className={`inline-flex border border-primary-dark py-2 px-6 md:py-3 md:px-8 focus:outline-none rounded text-lg md:text-3xl opacity-0 animate-slideInRight hover:bg-primary-dark hover:text-white transition-colors duration-500 ease-in-out link`}
+                    >
+                      <p className="mx-auto">Ajanvaraus</p>
+                    </Link>
+                  </div>
+                  <p>
+                    <TextGenerateEffect
+                      filter={true}
+                      duration={1}
+                      delay={0.01}
+                      className="text-sm"
+                      words={
+                        "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
+                      }
+                    />
+                  </p>
                 </div>
               </div>
             </div>
             <div
-              className={`absolute ${isWideScreen ? "bottom-5" : "bottom-10"} left-1/2 transform -translate-x-1/2 flex flex-col items-center z-30`}
+              className={`absolute bottom-5 left-1/2 transform -translate-x-1/2 flex flex-col items-center z-30`}
             >
-              <button
-                onClick={toggleReadMore}
-                className="flex flex-col items-center justify-center"
-              >
-                {direction === "up" ? (
-                  <span
-                    className="animate-slideDownDelayed"
-                    style={{
-                      animationDelay: "1s",
-                      animationFillMode: "forwards",
-                      opacity: "0",
-                    }}
-                  >
-                    <HiChevronDoubleUp
-                      className={`w-8 h-8 mx-auto text-primary`}
+              {visible && (
+                <span
+                  className="opacity-0 animate-slideDown hover:text-white transition-all duration-800 ease-in-out"
+                  style={{
+                    animationDelay: "1s",
+                    animationFillMode: "forwards",
+                  }}
+                  onClick={toggleTransition}
+                >
+                  <p className="text-lg md:text-2xl mb-2 ">
+                    <TextGenerateEffect
+                      filter={true}
+                      duration={2}
+                      delay={0.01}
+                      className="text-sm"
+                      words={"Lisää"}
                     />
-                    <p className="text-lg md:text-2xl mt-2 text-primary">
-                      Lue lisää
-                    </p>
-                  </span>
-                ) : (
-                  <span
-                    className="animate-slideDownDelayed"
-                    style={{
-                      animationDelay: "1s",
-                      animationFillMode: "forwards",
-                      opacity: "0",
-                    }}
-                  >
-                    <p className="text-lg md:text-2xl mb-2 text-primary">
-                      Lue lisää
-                    </p>
-                    <HiChevronDoubleDown
-                      className={`w-8 h-8 mx-auto text-primary`}
-                    />
-                  </span>
-                )}
-              </button>
+                    <HiChevronDoubleDown className="w-8 h-8 mx-auto" />
+                  </p>
+                </span>
+              )}
             </div>
           </div>
           <div className="absolute bottom-0 w-full h-2 bg-gradient-to-r from-white/0 via-primary to-primary/100 z-20" />

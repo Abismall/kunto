@@ -13,7 +13,7 @@ type Card = {
   content: () => JSX.Element;
 };
 
-export function ExpandableCard({ cards }: { cards: Card[] }) {
+export function ExpandableCardCollection({ cards }: { cards: Card[] }) {
   const [active, setActive] = useState<Card | null>(null);
   const ref = useRef<HTMLDivElement>(null);
   const id = useId();

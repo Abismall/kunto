@@ -117,16 +117,16 @@ export const ComponentItem = ({
   );
 };
 
-export const HoveredLink = ({ children, ...rest }: any) => {
+export const HoveredLink = ({ children, className, ...rest }: any) => {
   return (
-    <Link {...rest} className="text-typography hover:text-primary">
+    <Link {...rest} className={`text-typography ${className}`}>
       {children}
     </Link>
   );
 };
-export const HoveredButton = ({ children, ...rest }: any) => {
+export const HoveredButton = ({ children, className, ...rest }: any) => {
   return (
-    <button {...rest} className="text-typography hover:text-primary">
+    <button {...rest} className={`text-typography ${className}`}>
       {children}
     </button>
   );

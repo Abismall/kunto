@@ -69,16 +69,15 @@ const Navbar = ({ className }: { className?: string }) => {
         <p className="absolute left-4 text-2xl shadow-lg text-typography">
           Kuntoäijät
         </p>
+        <div className="flex flex-row">
+          <HoveredLink className="pr-2 hover:text-dark" href="/">
+            Etusivu
+          </HoveredLink>
+          <HoveredLink className="pl-2 hover:text-dark" href="/dashboard">
+            Hallintapaneeli
+          </HoveredLink>
+        </div>
         <Menu>
-          <div
-            onMouseEnter={() => handleMouseEnter("Navigointi")}
-            onMouseLeave={handleMouseLeave}
-          >
-            <MenuItem setActive={setActive} active={active} item="Navigointi">
-              <HoveredLink href="/">Etusivu</HoveredLink>
-              <HoveredLink href="/dashboard">Hallintapaneeli</HoveredLink>
-            </MenuItem>
-          </div>
           <div
             onMouseEnter={() => handleMouseEnter("Themes")}
             onMouseLeave={handleMouseLeave}
