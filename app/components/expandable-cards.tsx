@@ -8,7 +8,6 @@ type Card = {
   description: string;
   title: string;
   src: string | React.ReactNode;
-  ctaText: string;
   ctaLink: string;
   content: () => JSX.Element;
 };
@@ -100,14 +99,13 @@ export function ExpandableCardCollection({ cards }: { cards: Card[] }) {
                       {active.description}
                     </motion.p>
                   </div>
-                  <motion.a
+                  <motion.button
                     layoutId={`button-${active.title}-${id}`}
-                    href={active.ctaLink}
-                    target="_blank"
+                    onClick={() => setActive(null)}
                     className="px-4 py-3 text-sm rounded-full font-bold bg-primary-dark text-typography"
                   >
-                    {active.ctaText}
-                  </motion.a>
+                    Sulje
+                  </motion.button>
                 </div>
                 <div className="pt-4 relative px-4">
                   <motion.div
@@ -141,10 +139,10 @@ export function ExpandableCardCollection({ cards }: { cards: Card[] }) {
                     height={100}
                     src={card.src}
                     alt={card.title}
-                    className="h-40 w-40 md:h-14 md:w-14 rounded-lg object-cover object-top"
+                    className="h-40 w-30 md:h-14 md:w-14 rounded-lg object-cover object-top"
                   />
                 ) : (
-                  <div className="h-40 w-40 md:h-14 md:w-14 flex items-center justify-center text-primary">
+                  <div className="h-40 w-30 md:h-14 md:w-14 flex items-center justify-center text-primary">
                     {card.src}
                   </div>
                 )}
@@ -168,7 +166,7 @@ export function ExpandableCardCollection({ cards }: { cards: Card[] }) {
               layoutId={`button-${card.title}-${id}`}
               className="px-4 py-2 text-sm rounded-full font-bold bg-primary hover:bg-primary-dark hover:text-secondary text-typography mt-4 md:mt-0"
             >
-              {card.ctaText}
+              Avaa
             </motion.button>
           </motion.div>
         ))}
@@ -177,12 +175,9 @@ export function ExpandableCardCollection({ cards }: { cards: Card[] }) {
   );
 }
 
-export const CloseIcon = () => {
+const CloseIcon = () => {
   return (
-    <motion.svg
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0, transition: { duration: 0.05 } }}
+    <svg
       xmlns="http://www.w3.org/2000/svg"
       width="24"
       height="24"
@@ -192,11 +187,11 @@ export const CloseIcon = () => {
       strokeWidth="2"
       strokeLinecap="round"
       strokeLinejoin="round"
-      className="h-4 w-4 text-dark"
+      className="text-black h-4 w-4 group-hover:scale-125 group-hover:rotate-3 transition duration-200"
     >
       <path stroke="none" d="M0 0h24v24H0z" fill="none" />
       <path d="M18 6l-12 12" />
       <path d="M6 6l12 12" />
-    </motion.svg>
+    </svg>
   );
 };

@@ -25,7 +25,6 @@ const cards2 = [
     description: "Henkilökohtainen treeniohjelma 8 viikkoa xx€",
     title: "Henkilökohtainen treeniohjelma",
     src: <FaDumbbell className="text-6xl" />,
-    ctaText: "Learn More",
     ctaLink: "#",
     content: () => (
       <p>
@@ -39,7 +38,6 @@ const cards2 = [
     description: "Henkilökohtainen elämäntapavalmennus 1kk xx€",
     title: "Henkilökohtainen elämäntapavalmennus",
     src: <FaHeartbeat className="text-6xl" />,
-    ctaText: "Learn More",
     ctaLink: "#",
     content: () => (
       <p>
@@ -53,7 +51,6 @@ const cards2 = [
     description: "Ohjattu treeni xx€/h",
     title: "Ohjattu treeni",
     src: <FaRunning className="text-6xl" />,
-    ctaText: "Learn More",
     ctaLink: "#",
     content: () => <p>Hintaan lisätään valitun salin käyntimaksut.</p>,
   },
@@ -61,7 +58,6 @@ const cards2 = [
     description: "Henkilökohtainen ravinto-ohjelma 12 viikkoa xx€",
     title: "Henkilökohtainen ravinto-ohjelma",
     src: <FaAppleAlt className="text-6xl" />,
-    ctaText: "Learn More",
     ctaLink: "#",
     content: () => (
       <p>Sisältää kahden viikon välein ohjelman muokkaamisen tarvittaessa.</p>
@@ -260,8 +256,11 @@ export default function Page() {
                         {card.description}
                       </ModalContent>
                       <ModalFooter>
+                        <ModalTrigger className="mr-6 px-4 py-2 bg-primary text-white rounded-md">
+                          Sulje
+                        </ModalTrigger>
                         <button
-                          className="px-4 py-2 bg-primary text-white rounded-md"
+                          className="ml-6 px-4 py-2 bg-primary text-white rounded-md"
                           onClick={() => alert("Pyydä tarjous")}
                         >
                           Pyydä tarjous
