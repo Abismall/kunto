@@ -45,20 +45,20 @@ export function ExpandableCardCollection({ cards }: { cards: Card[] }) {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 h-full w-full z-10"
+            className="fixed inset-0 h-full w-full z-10 "
           />
         )}
       </AnimatePresence>
       <AnimatePresence>
         {active ? (
-          <div className="fixed inset-0 grid place-items-center z-[100]">
+          <div className="fixed inset-0 grid place-items-center z-[100] ">
             <motion.button
               key={`button-${active.title}-${id}`}
               layout
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0, transition: { duration: 0.05 } }}
-              className="flex absolute top-2 right-2 lg:hidden items-center justify-center bg-dark rounded-full h-6 w-6"
+              className="flex absolute top-2 right-2 lg:hidden items-center justify-center rounded-full h-6 w-6"
               onClick={() => setActive(null)}
             >
               <CloseIcon />
@@ -66,7 +66,7 @@ export function ExpandableCardCollection({ cards }: { cards: Card[] }) {
             <motion.div
               layoutId={`card-${active.title}-${id}`}
               ref={ref}
-              className="w-full max-w-[500px] h-full md:h-fit md:max-h-[90%] flex flex-col bg-light sm:rounded-3xl overflow-hidden"
+              className="w-full max-w-[500px] h-full md:h-fit md:max-h-[90%] flex flex-col bg-light sm:rounded-3xl overflow-hidden border border-primary"
             >
               <motion.div layoutId={`image-${active.title}-${id}`}>
                 {typeof active.src === "string" ? (
@@ -89,13 +89,13 @@ export function ExpandableCardCollection({ cards }: { cards: Card[] }) {
                   <div className="">
                     <motion.h3
                       layoutId={`title-${active.title}-${id}`}
-                      className="font-extrabold text-primary"
+                      className="font-extrabold text-secondary-dark"
                     >
                       {active.title}
                     </motion.h3>
                     <motion.p
                       layoutId={`description-${active.description}-${id}`}
-                      className="font-extrabold text-primary"
+                      className="font-extrabold text-secondary-dark"
                     >
                       {active.description}
                     </motion.p>
@@ -108,7 +108,7 @@ export function ExpandableCardCollection({ cards }: { cards: Card[] }) {
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
-                    className="font-extrabold text-dark text-xs md:text-sm lg:text-base h-40 md:h-fit pb-10 flex flex-col items-start gap-4 overflow-auto [mask:linear-gradient(to_bottom,white,white,transparent)] [scrollbar-width:none] [-ms-overflow-style:none] [-webkit-overflow-scrolling:touch]"
+                    className="font-extrabold text-xs md:text-sm lg:text-base h-40 md:h-fit pb-10 flex flex-col items-start gap-4 overflow-auto [mask:linear-gradient(to_bottom,white,white,transparent)] [scrollbar-width:none] [-ms-overflow-style:none] [-webkit-overflow-scrolling:touch]"
                   >
                     {active.content()}
                   </motion.div>
@@ -117,7 +117,7 @@ export function ExpandableCardCollection({ cards }: { cards: Card[] }) {
               <motion.button
                 layoutId={`button-${active.title}-${id}`}
                 onClick={() => setActive(null)}
-                className="text-sm font-bold bg-primary-dark text-typography sm:relative sm:bottom-auto sm:left-auto sm:right-auto absolute bottom-0 left-0 right-0 p-4"
+                className="text-sm font-bold bg-buttons text-typography sm:relative sm:bottom-auto sm:left-auto sm:right-auto absolute bottom-0 left-0 right-0 p-4"
               >
                 Sulje
               </motion.button>
@@ -134,6 +134,7 @@ export function ExpandableCardCollection({ cards }: { cards: Card[] }) {
             onClick={() => setActive(card)}
           >
             <BentoGridItem
+              className="border border-primary bg-light"
               icon={card.src}
               title={card.title}
               description={card.description}

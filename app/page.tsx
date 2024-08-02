@@ -150,20 +150,20 @@ export default function Page() {
             <div className="p-6 mr-4 ml-4 border border-secondary-dark rounded-lg shadow-lg bg-light bg-opacity-80 hover:bg-opacity-100 transition duration-300">
               <div className="flex items-center mb-4">
                 <FaBriefcase className="text-primary text-3xl mr-3" />
-                <h3 className="text-2xl md:text-4xl font-bold text-dark">
+                <h3 className="text-2xl md:text-4xl font-bold text-secondary-dark">
                   YRITYKSILLE
                 </h3>
               </div>
-              <p className="mb-4 text-lg text-typography">
+              <p className="mb-4 text-lg text-dark">
                 Toteutamme yrityksille tyky-päiviä sekä työkykyä tukevia
                 hyvinvointikampanjoita. Palvelu koostetaan tilaajan
                 henkilöstömäärän ja tarpeen mukaan. Pyydä tarjous
                 yhteydenottolomakkeella.
               </p>
-              <p className="text-lg font-bold text-dark">
+              <p className="text-lg font-bold text-secondary-dark">
                 Suosittuja tyky-päiväohjelmia:
               </p>
-              <ul className="list-disc list-inside mb-4 text-lg text-typography">
+              <ul className="list-disc list-inside mb-4 text-lg text-dark">
                 <li>Kuntonyrkkeily</li>
                 <li>Rentoutumispaja</li>
                 <li>Seinäkiipeily</li>
@@ -174,20 +174,20 @@ export default function Page() {
           <div className="p-6 mr-4 ml-4 border border-secondary-dark rounded-lg shadow-lg bg-light bg-opacity-80 hover:bg-opacity-100 transition duration-300">
             <div className="flex items-center mb-4">
               <FaBriefcase className="text-primary text-3xl mr-3" />
-              <h3 className="text-2xl md:text-4xl font-bold text-dark">
+              <h3 className="text-2xl md:text-4xl font-bold text-secondary-dark">
                 YKSITYISILLE
               </h3>
             </div>
-            <p className="mb-4 text-lg text-typography">
+            <p className="mb-4 text-lg text-dark">
               Toteutamme yrityksille tyky-päiviä sekä työkykyä tukevia
               hyvinvointikampanjoita. Palvelu koostetaan tilaajan
               henkilöstömäärän ja tarpeen mukaan. Pyydä tarjous
               yhteydenottolomakkeella.
             </p>
-            <p className="text-lg font-bold text-dark">
+            <p className="text-lg font-bold text-secondary-dark">
               Suosittuja tyky-päiväohjelmia:
             </p>
-            <ul className="list-disc list-inside mb-4 text-lg text-typography">
+            <ul className="list-disc list-inside mb-4 text-lg text-dark">
               <li>Kuntonyrkkeily</li>
               <li>Rentoutumispaja</li>
               <li>Seinäkiipeily</li>
@@ -197,7 +197,7 @@ export default function Page() {
         </div>
         <div>
           <div className="text-center relative z-10 py-12">
-            <h2 className="text-3xl md:text-5xl font-extrabold mb-6 text-primary p-4 rounded-lg shadow-md">
+            <h2 className="text-3xl md:text-5xl font-extrabold mb-6 text-secondary-dark p-4 rounded-lg shadow-md">
               ALKAVAT RYHMÄVALMENNUKSET
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 text-left">
@@ -208,7 +208,7 @@ export default function Page() {
                 >
                   <div className="flex items-center mb-4">
                     {card.icon}
-                    <h3 className="text-2xl font-bold text-dark">
+                    <h3 className="text-2xl font-bold text-secondary-dark">
                       {card.title} {card.duration}
                     </h3>
                   </div>
@@ -224,11 +224,11 @@ export default function Page() {
                         {card.description}
                       </ModalContent>
                       <ModalFooter>
-                        <ModalTrigger className="mr-6 px-4 py-2 bg-primary text-white rounded-md">
+                        <ModalTrigger className="mr-6 px-4 py-2 bg-buttons text-white rounded-md">
                           Sulje
                         </ModalTrigger>
                         <button
-                          className="ml-6 px-4 py-2 bg-primary text-white rounded-md"
+                          className="ml-6 px-4 py-2 bg-buttons text-white rounded-md"
                           onClick={() => alert("Pyydä tarjous")}
                         >
                           Pyydä tarjous

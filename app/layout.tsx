@@ -23,7 +23,7 @@ export default async function RootLayout({
           <header>
             <Navbar />
           </header>
-          <main>
+          <main className="bg-gradient-to-r from-light via-light-50 to-light">
             {children}
             <CookieConsent />
           </main>

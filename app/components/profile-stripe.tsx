@@ -46,7 +46,10 @@ const ProfileStripe: React.FC = () => {
         {trainers.map((trainer, index) => (
           <CardContainer className="inter-var" key={`trainer-${index}`}>
             <CardBody className="bg-light relative group/card border-primary-dark w-auto sm:w-[30rem] h-auto rounded-xl p-6 border">
-              <CardItem translateZ="50" className="text-xl font-bold text-dark">
+              <CardItem
+                translateZ="50"
+                className="text-xl font-bold text-secondary-dark"
+              >
                 {trainer.name}
               </CardItem>
               <CardItem
@@ -71,14 +74,14 @@ const ProfileStripe: React.FC = () => {
                   as={Link}
                   href=""
                   target="__blank"
-                  className="px-4 py-2 rounded-xl text-xs font-normal text-dark"
+                  className="px-4 py-2 rounded-xl text-xs font-normal text-secondary-dark"
                 >
                   {trainer.email}
                 </CardItem>
                 <CardItem
                   translateZ={20}
                   as="button"
-                  className="px-4 py-2 rounded-xl bg-primary text-white text-xs font-bold"
+                  className="px-4 py-2 rounded-xl bg-buttons text-white text-xs font-bold"
                 >
                   {trainer.title}
                 </CardItem>
