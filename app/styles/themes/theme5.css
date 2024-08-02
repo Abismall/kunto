@@ -1,0 +1,10 @@
+html[data-theme="theme5"] {
+    --color-primary: #f04000;
+    --color-primary-dark: #e03000;
+    --color-secondary: #98ff00;
+    --color-secondary-dark: #377908;
+    --color-buttons: #ea4a22;
+    --color-dark: #5b5e53;
+    --color-light: #f7fcfc;
+    --color-typography: #ffffff;
+}

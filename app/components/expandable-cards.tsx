@@ -134,7 +134,7 @@ export function ExpandableCardCollection({ cards }: { cards: Card[] }) {
             onClick={() => setActive(card)}
           >
             <BentoGridItem
-              className="border border-primary bg-light"
+              className="border border-primary bg-light hover:cursor-pointer"
               icon={card.src}
               title={card.title}
               description={card.description}

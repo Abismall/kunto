@@ -59,7 +59,13 @@ export default function Hero() {
             <div className="container flex px-5 pt-28 md:pt-56 md:flex-row flex-col items-center justify-center md:justify-start mx-auto relative z-30">
               <div className="lg:flex-grow md:w-1/2 lg:pr-24 md:pr-16 flex flex-col md:items-start md:text-left md:mb-0 items-center text-center">
                 <div className="text-container">
-                  <h3 className="text-6xl text-primary-dark opacity-0 animate-slideDown">
+                  <h3
+                    className="text-6xl opacity-0 animate-slideDown"
+                    style={{
+                      textShadow:
+                        "1px 1px 0 var(--color-dark), -1px -1px 0 var(--color-dark), 1px -1px 0 var(--color-dark), -1px 1px 0 var(--color-dark)",
+                    }}
+                  >
                     Ipsum dolor sit amet.
                   </h3>
                   <div className="flex flex-col justify-center pt-4 md:justify-start gap-6 w-[20rem] links-container">
@@ -67,13 +73,29 @@ export default function Hero() {
                       href="#services"
                       className={`inline-flex border border-primary-dark py-2 px-6 md:py-3 md:px-8 focus:outline-none rounded text-lg md:text-3xl opacity-0 animate-slideInLeft hover:bg-primary-dark hover:text-white transition-colors duration-500 ease-in-out link`}
                     >
-                      <p className="text-center w-full">Palvelut</p>
+                      <p
+                        className="mx-auto"
+                        style={{
+                          textShadow:
+                            "1px 1px 0 var(--color-dark), -1px -1px 0 var(--color-dark), 1px -1px 0 var(--color-dark), -1px 1px 0 var(--color-dark)",
+                        }}
+                      >
+                        Palvelut
+                      </p>
                     </Link>
                     <Link
                       href="/contact"
                       className={`inline-flex border border-primary-dark py-2 px-6 md:py-3 md:px-8 focus:outline-none rounded text-lg md:text-3xl opacity-0 animate-slideInRight hover:bg-primary-dark hover:text-white transition-colors duration-500 ease-in-out link`}
                     >
-                      <p className="mx-auto">Ajanvaraus</p>
+                      <p
+                        className="mx-auto"
+                        style={{
+                          textShadow:
+                            "1px 1px 0 var(--color-dark), -1px -1px 0 var(--color-dark), 1px -1px 0 var(--color-dark), -1px 1px 0 var(--color-dark)",
+                        }}
+                      >
+                        Ajanvaraus
+                      </p>
                     </Link>
                   </div>
                   <p>

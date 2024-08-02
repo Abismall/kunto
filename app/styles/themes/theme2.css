@@ -1,12 +1,10 @@
 html[data-theme="theme2"] {
-    --color-primary: #f4cc70;
-    --color-primary-dark: #d6a958;
-    --color-secondary: #6ab187;
-    --color-highlight: #de7a22;
-    --color-dark: #333333;
-    --color-primary-light: #ffde8b;
-    --color-secondary-light: #ca724c;
-    --color-secondary-dark: #528e71;
-    --color-buttons: #de7a22;
-    --color-typography: #20948b;
+    --color-primary: #d05000;
+    --color-primary-dark: #c04000;
+    --color-secondary: #a8ff30;
+    --color-secondary-dark: #478918;
+    --color-buttons: #ca4a22;
+    --color-dark: #4b4e53;
+    --color-light: #e7cccc;
+    --color-typography: #ffffff;
 }

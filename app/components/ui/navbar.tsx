@@ -82,24 +82,34 @@ const Navbar = ({ className }: { className?: string }) => {
             <MenuItem setActive={setActive} active={active} item="Themes">
               <div className="flex flex-col">
                 <PictureItem
-                  title="Default theme"
+                  title="Default"
                   onClick={() => changeTheme("")}
-                  src="/theme-1-palette.png"
+                  src="/default-theme.png"
                 />
                 <PictureItem
                   title="Theme 1"
                   onClick={() => changeTheme("theme1")}
-                  src="/theme-1-palette.png"
+                  src="/theme-1.png"
                 />
                 <PictureItem
                   title="Theme 2"
                   onClick={() => changeTheme("theme2")}
-                  src="/theme-1-palette.png"
+                  src="/theme-2.png"
                 />
                 <PictureItem
                   title="Theme 3"
                   onClick={() => changeTheme("theme3")}
-                  src="/theme-1-palette.png"
+                  src="/theme-3.png"
+                />
+                <PictureItem
+                  title="Theme 4"
+                  onClick={() => changeTheme("theme4")}
+                  src="/theme-4.png"
+                />
+                <PictureItem
+                  title="Theme 5"
+                  onClick={() => changeTheme("theme5")}
+                  src="/theme-5.png"
                 />
               </div>
             </MenuItem>
