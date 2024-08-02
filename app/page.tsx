@@ -25,7 +25,7 @@ const cards2 = [
   {
     description: "Henkilökohtainen treeniohjelma 8 viikkoa xx€",
     title: "Henkilökohtainen treeniohjelma",
-    src: <FaDumbbell className="text-6xl" />,
+    src: <FaDumbbell className="text-primary text-6xl mt-4 mb-4" />,
     ctaLink: "#",
     content: () => (
       <p>
@@ -38,14 +38,14 @@ const cards2 = [
   {
     description: "Ohjattu treeni xx€/h",
     title: "Ohjattu treeni",
-    src: <FaRunning className="text-6xl" />,
+    src: <FaRunning className="text-primary text-6xl mt-4 mb-4" />,
     ctaLink: "#",
     content: () => <p>Hintaan lisätään valitun salin käyntimaksut.</p>,
   },
   {
     description: "Henkilökohtainen ravinto-ohjelma 12 viikkoa xx€",
     title: "Henkilökohtainen ravinto-ohjelma",
-    src: <FaAppleAlt className="text-6xl" />,
+    src: <FaAppleAlt className="text-primary text-6xl mt-4 mb-4" />,
     ctaLink: "#",
     content: () => (
       <p>Sisältää kahden viikon välein ohjelman muokkaamisen tarvittaessa.</p>
@@ -137,7 +137,7 @@ export default function Page() {
           lowerText={`The right way.`}
         />
       </section>
-      <div className="bg-gradient-to-r from-gray-200 via-white to-gray-200">
+      <div className="bg-gradient-to-r from-gray-200 via-gray-50 to-gray-200">
         <div className="mx-auto mb-4">
           <ProfileStripe />
         </div>
@@ -147,7 +147,7 @@ export default function Page() {
         </div>
         <div className="flex flex-col md:flex-row">
           <div>
-            <div className="p-6 mr-4 ml-4 mt-2 mb-2 border border-secondary-dark rounded-lg shadow-lg bg-light bg-opacity-80 hover:bg-opacity-100 transition duration-300">
+            <div className="p-6 mr-4 ml-4 border border-secondary-dark rounded-lg shadow-lg bg-light bg-opacity-80 hover:bg-opacity-100 transition duration-300">
               <div className="flex items-center mb-4">
                 <FaBriefcase className="text-primary text-3xl mr-3" />
                 <h3 className="text-2xl md:text-4xl font-bold text-dark">
