@@ -3,6 +3,7 @@ import Image from "next/image";
 import React, { useEffect, useId, useRef, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { useOutsideClick } from "@/lib/utils";
+import { BentoGrid, BentoGridItem } from "./bento-grid";
 
 type Card = {
   description: string;
@@ -99,14 +100,8 @@ export function ExpandableCardCollection({ cards }: { cards: Card[] }) {
                       {active.description}
                     </motion.p>
                   </div>
-                  <motion.button
-                    layoutId={`button-${active.title}-${id}`}
-                    onClick={() => setActive(null)}
-                    className="px-4 py-3 text-sm rounded-full font-bold bg-primary-dark text-typography"
-                  >
-                    Sulje
-                  </motion.button>
                 </div>
+
                 <div className="pt-4 relative px-4">
                   <motion.div
                     layout
@@ -119,58 +114,33 @@ export function ExpandableCardCollection({ cards }: { cards: Card[] }) {
                   </motion.div>
                 </div>
               </div>
+              <motion.button
+                layoutId={`button-${active.title}-${id}`}
+                onClick={() => setActive(null)}
+                className="text-sm font-bold bg-primary-dark text-typography sm:relative sm:bottom-auto sm:left-auto sm:right-auto absolute bottom-0 left-0 right-0 p-4"
+              >
+                Sulje
+              </motion.button>
             </motion.div>
           </div>
         ) : null}
       </AnimatePresence>
-      <ul className="max-w-2xl mx-auto w-full gap-4">
+
+      <BentoGrid>
         {cards.map((card) => (
           <motion.div
             layoutId={`card-${card.title}-${id}`}
             key={`card-${card.title}-${id}`}
             onClick={() => setActive(card)}
-            className="p-4 flex flex-col md:flex-row justify-between items-center hover:bg-light rounded-xl cursor-pointer"
           >
-            <div className="flex gap-4 flex-col md:flex-row">
-              <motion.div layoutId={`image-${card.title}-${id}`}>
-                {typeof card.src === "string" ? (
-                  <Image
-                    width={100}
-                    height={100}
-                    src={card.src}
-                    alt={card.title}
-                    className="h-40 w-30 md:h-14 md:w-14 rounded-lg object-cover object-top"
-                  />
-                ) : (
-                  <div className="h-40 w-30 md:h-14 md:w-14 flex items-center justify-center text-primary">
-                    {card.src}
-                  </div>
-                )}
-              </motion.div>
-              <div className="">
-                <motion.h3
-                  layoutId={`title-${card.title}-${id}`}
-                  className="font-medium text-dark text-center md:text-left"
-                >
-                  {card.title}
-                </motion.h3>
-                <motion.p
-                  layoutId={`description-${card.description}-${id}`}
-                  className="text-dark text-center md:text-left"
-                >
-                  {card.description}
-                </motion.p>
-              </div>
-            </div>
-            <motion.button
-              layoutId={`button-${card.title}-${id}`}
-              className="px-4 py-2 text-sm rounded-full font-bold bg-primary hover:bg-primary-dark hover:text-secondary text-typography mt-4 md:mt-0"
-            >
-              Avaa
-            </motion.button>
+            <BentoGridItem
+              icon={card.src}
+              title={card.title}
+              description={card.description}
+            />
           </motion.div>
         ))}
-      </ul>
+      </BentoGrid>
     </>
   );
 }
