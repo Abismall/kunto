@@ -8,11 +8,11 @@
   html {
     --color-primary: #e03e00;
     --color-primary-dark: #e03100;
-    --color-secondary: #b8ff00;
-    --color-secondary-dark: #577908;
+    --color-secondary: #db7d58;
+    --color-secondary-dark: #e45117;
     --color-buttons: #da4a12;
     --color-dark: #4b4e53;
-    --color-light: #e7dcdc;
+    --color-light: #ebebeb;
     --color-typography: #ffff;
   }
 }

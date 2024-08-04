@@ -77,6 +77,7 @@ module.exports = {
         dark: 'var(--color-dark)',
         'light': 'var(--color-light)',
         typography: 'var(--color-typography)',
+        highlight: 'var(--color-highlight)',
       },
 
     },
